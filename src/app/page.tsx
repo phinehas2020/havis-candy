@@ -179,7 +179,7 @@ export default async function HomePage() {
               <div className="md:col-span-7 space-y-8">
                 <span className="overline">Our Story</span>
                 <h2 className="section-heading">{settings.storyHeading}</h2>
-                <p className="lead-text text-[var(--color-amber-light)]">{settings.storyBody}</p>
+                <p className="lead-text">{settings.storyBody}</p>
 
                 <div className="ornament-rule">
                   <div className="ornament-dots"><span></span></div>

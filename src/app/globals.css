@@ -1322,6 +1322,10 @@ img {
   color: var(--color-cream);
 }
 
+.section-dark .lead-text {
+  color: var(--color-amber-light);
+}
+
 .section-dark .body-text {
   color: rgba(253, 248, 240, 0.8);
 }
