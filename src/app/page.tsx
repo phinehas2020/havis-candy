@@ -1,0 +1,370 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { JsonLd } from "@/components/json-ld";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { getLocations, getProducts, getSiteSettings, getTestimonials } from "@/lib/data/content";
+import { buildFaqSchema, buildLocalBusinessSchema, buildProductsSchema } from "@/lib/seo/schemas";
+
+export default async function HomePage() {
+  const [settings, products, locations, testimonials] = await Promise.all([
+    getSiteSettings(),
+    getProducts(),
+    getLocations(),
+    getTestimonials(),
+  ]);
+
+  const featuredProducts = products.filter((product) => product.featured);
+  const heroProducts = featuredProducts.length ? featuredProducts : products;
+  const showcaseProducts = heroProducts.slice(0, 3);
+  const heroProduct = heroProducts[0];
+  const spotlightTestimonial = testimonials[0];
+
+  return (
+    <>
+      <JsonLd data={buildLocalBusinessSchema(locations)} />
+      <JsonLd data={buildProductsSchema(showcaseProducts)} />
+      <JsonLd data={buildFaqSchema()} />
+
+      <SiteHeader />
+
+      <main className="min-h-dvh">
+        {/* ═══════════════════════════════════════════════════════════════════
+            HERO SECTION — Warm, inviting opening
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section className="section-lg candy-counter-bg">
+          <div className="container">
+            {/* Heritage Badge */}
+            <div className="flex justify-center mb-6">
+              <div className="heritage-badge animate-in animate-float">
+                <span className="heritage-badge-label">Handmade</span>
+                <span className="heritage-badge-year">2019</span>
+                <span className="heritage-badge-text">Waco, Texas</span>
+              </div>
+            </div>
+
+            {/* Main Hero Content */}
+            <div className="text-center max-w-4xl mx-auto mb-12">
+              <h1 className="display-heading mb-8">
+                Uniquely flavored,<br />
+                <em>handmade</em> hard caramels.
+              </h1>
+              <p className="lead-text max-w-2xl mx-auto mb-10">
+                Small-batch sweets made from scratch with all-natural ingredients
+                and old-fashioned care. Born on a family farm in Central Texas.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/products" className="btn btn-primary">
+                  Shop The Collection
+                </Link>
+                <a href="#where-to-buy" className="btn btn-secondary">
+                  Find Us In Waco
+                </a>
+              </div>
+            </div>
+
+            {/* Featured Product Hero Card */}
+            {heroProduct && (
+              <div className="max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] shadow-xl overflow-hidden rounded-[var(--radius-xl)]">
+                  {/* Product Image */}
+                  <div className="relative aspect-square md:aspect-auto">
+                    <div className="absolute top-6 left-6 z-10">
+                      <div className="ribbon-label">Signature</div>
+                    </div>
+                    <Image
+                      src={heroProduct.imageUrl}
+                      alt={heroProduct.title}
+                      fill
+                      priority
+                      className="object-cover"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                    />
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="p-10 md:p-12 flex flex-col justify-center">
+                    <span className="overline-simple mb-4">Featured Flavor</span>
+                    <h2 className="section-heading mb-4">{heroProduct.title}</h2>
+                    <p className="body-text mb-8">{heroProduct.shortDescription}</p>
+
+                    <div className="flex items-end justify-between border-t-2 border-dashed border-[var(--color-border)] pt-6">
+                      <div className="price">
+                        <span className="price-currency">$</span>
+                        <span className="price-amount">{heroProduct.price.toFixed(2)}</span>
+                      </div>
+                      <Link href="/products" className="btn btn-primary btn-sm">
+                        View Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Flourish Divider */}
+        <div className="flourish-divider" />
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            PRODUCT SHOWCASE — Warm candy counter grid
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section className="section">
+          <div className="container">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+              <div>
+                <span className="overline mb-4 block">Best-Selling Flavors</span>
+                <h2 className="section-heading">
+                  A classic candy counter,<br className="hidden md:block" /> reimagined.
+                </h2>
+              </div>
+              <Link href="/products" className="btn btn-secondary hidden md:inline-flex">
+                Browse All Flavors
+              </Link>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {showcaseProducts.map((product, index) => (
+                <article
+                  key={product.id}
+                  className={`product-card animate-in animate-delay-${index + 1}`}
+                  id={product.slug}
+                >
+                  {product.badge && (
+                    <div className="product-card-badge">
+                      <div className="ribbon-label-gold ribbon-label">{product.badge}</div>
+                    </div>
+                  )}
+                  <div className="product-card-media">
+                    <Image
+                      src={product.imageUrl}
+                      alt={product.title}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                    />
+                  </div>
+                  <div className="product-card-content">
+                    <h3 className="product-card-name">{product.title}</h3>
+                    <p className="product-card-description">{product.shortDescription}</p>
+                    <div className="product-card-footer">
+                      <div className="price">
+                        <span className="price-currency">$</span>
+                        <span className="price-amount">{product.price.toFixed(2)}</span>
+                      </div>
+                      <span className="status-available">In Stock</span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center md:hidden">
+              <Link href="/products" className="btn btn-primary">
+                Browse All Flavors
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            OUR STORY — Editorial two-column narrative
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section id="story" className="section-lg section-alt">
+          <div className="container">
+            <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+              {/* Story Content */}
+              <div className="md:col-span-7 space-y-8">
+                <span className="overline">Our Story</span>
+                <h2 className="section-heading">{settings.storyHeading}</h2>
+                <p className="lead-text">{settings.storyBody}</p>
+
+                <div className="ornament-rule">
+                  <div className="ornament-dots"><span></span></div>
+                </div>
+
+                <p className="body-text">
+                  From Dry Creek Road to kitchens across Central Texas, each batch reflects
+                  the same thoughtful craft that started it all—real ingredients, real care,
+                  and a genuine love for making something special.
+                </p>
+              </div>
+
+              {/* Heritage Card */}
+              <div className="md:col-span-5">
+                <div className="card-framed">
+                  <div className="text-center mb-8 relative z-10">
+                    <div className="heritage-stamp mx-auto">
+                      <span className="heritage-stamp-text">Est. 2019 · Waco, TX</span>
+                    </div>
+                  </div>
+                  <h3 className="subheading text-center mb-4 relative z-10">Made with old-fashioned care</h3>
+                  <p className="body-text-sm text-center relative z-10">{settings.philosophyBody}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            THE CRAFT — Feature cards with warm treatments
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section id="craft" className="section-lg">
+          <div className="container">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="overline mb-4 block">Made With Care</span>
+              <h2 className="section-heading">
+                Hand-poured. Hand-wrapped.<br />Never rushed.
+              </h2>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {[
+                {
+                  title: "Handcrafted Quality",
+                  description:
+                    "Every caramel is made from scratch with all-natural ingredients\u2014real butter, pure cane sugar, farm-fresh cream.",
+                  number: "01",
+                },
+                {
+                  title: "Farm-Grown Sorghum",
+                  description:
+                    "Our signature sorghum syrup comes from the family farm, giving Havi\u2019s most-loved caramel its distinct, nostalgic taste.",
+                  number: "02",
+                },
+                {
+                  title: "Distinctive Flavors",
+                  description:
+                    "Sorghum, chai, coffee, and seasonal releases\u2014each one crafted to feel familiar yet never ordinary.",
+                  number: "03",
+                },
+              ].map((item, index) => (
+                <article
+                  key={item.title}
+                  className={`card animate-in animate-delay-${index + 1}`}
+                >
+                  <span
+                    className="block font-display text-3xl font-semibold text-[var(--color-coral-light)] mb-5"
+                    aria-hidden="true"
+                  >
+                    {item.number}
+                  </span>
+                  <h3 className="subheading mb-4">{item.title}</h3>
+                  <p className="body-text-sm">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            TESTIMONIAL — Warm quote block
+            ═══════════════════════════════════════════════════════════════════ */}
+        {spotlightTestimonial && (
+          <section className="section-lg section-dark">
+            <div className="container">
+              <div className="testimonial">
+                <blockquote className="testimonial-quote">
+                  {spotlightTestimonial.quote}
+                </blockquote>
+                <p className="testimonial-author">{spotlightTestimonial.author}</p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            WHERE TO BUY — Location cards
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section id="where-to-buy" className="section-lg">
+          <div className="container">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="overline mb-4 block">Where To Buy</span>
+              <h2 className="section-heading">Find us across the Waco area.</h2>
+              <p className="body-text mt-4">
+                Shop online for delivery anywhere, or visit one of our local retail partners.
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {locations.map((location, index) => (
+                <article
+                  key={location.id}
+                  className={`card animate-in animate-delay-${index + 1}`}
+                >
+                  <div className="flex flex-col h-full">
+                    <h3 className="subheading mb-3">{location.name}</h3>
+                    <p className="body-text-sm text-[var(--color-mocha)] mb-6 flex-grow">
+                      {location.streetAddress}
+                      <br />
+                      {location.city}, {location.region} {location.postalCode}
+                    </p>
+                    <a
+                      href={location.mapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-ghost w-full"
+                    >
+                      Open Map
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            CONTACT — Get in touch
+            ═══════════════════════════════════════════════════════════════════ */}
+        <section className="section section-alt">
+          <div className="container container-narrow">
+            <div className="card-framed">
+              <div className="grid md:grid-cols-2 gap-10 relative z-10">
+                <div>
+                  <span className="overline-simple block mb-4">Get In Touch</span>
+                  <h2 className="subheading mb-4">Let&apos;s make gift-giving sweeter.</h2>
+                  <p className="body-text-sm">
+                    For wholesale inquiries, custom orders, events, or product questions,
+                    we&apos;d love to hear from you.
+                  </p>
+                </div>
+                <div className="space-y-5 body-text-sm">
+                  <p>
+                    <span className="font-semibold text-[var(--color-chocolate)]">Email</span>
+                    <br />
+                    <a
+                      href={`mailto:${settings.contactEmail}`}
+                      className="hover:text-[var(--color-coral)] transition-colors"
+                    >
+                      {settings.contactEmail}
+                    </a>
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[var(--color-chocolate)]">Phone</span>
+                    <br />
+                    <a
+                      href={`tel:${settings.contactPhone?.replace(/\D/g, "")}`}
+                      className="hover:text-[var(--color-coral)] transition-colors"
+                    >
+                      {settings.contactPhone}
+                    </a>
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[var(--color-chocolate)]">Mailing</span>
+                    <br />
+                    {settings.mailingAddress}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </>
+  );
+}
