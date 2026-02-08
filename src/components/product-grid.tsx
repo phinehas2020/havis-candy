@@ -90,7 +90,7 @@ export function ProductGrid({ products }: ProductGridProps) {
             {/* Content */}
             <div className="product-card-body">
               <div className="flex-1 space-y-2 mb-4">
-                <h2 className="font-display text-2xl text-[var(--color-ink)] text-balance">
+                <h2 className="product-card-name text-balance">
                   {product.title}
                 </h2>
                 <p className="text-sm text-[var(--color-muted)] text-pretty leading-relaxed">
@@ -99,7 +99,7 @@ export function ProductGrid({ products }: ProductGridProps) {
               </div>
 
               {/* Price & Stock */}
-              <div className="flex items-center justify-between border-t border-[var(--color-border)] pt-4 mb-4">
+              <div className="flex items-center justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 mb-4">
                 <div className="price-tag">
                   <span className="price-tag-currency">$</span>
                   <span className="price-tag-amount tabular-nums">
@@ -125,7 +125,7 @@ export function ProductGrid({ products }: ProductGridProps) {
       {/* Empty State */}
       {visibleProducts.length === 0 && (
         <div className="retro-card-fancy text-center py-12">
-          <p className="font-display text-2xl text-[var(--color-ink)] mb-2">
+          <p className="section-heading text-[var(--color-ink)] mb-2">
             No products found
           </p>
           <p className="section-body mb-6">

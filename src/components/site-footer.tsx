@@ -45,9 +45,9 @@ export function SiteFooter() {
           </p>
 
           {/* Heritage Stamp in Footer */}
-          <div className="mt-8 inline-flex items-center gap-3 py-2 px-4 border border-[var(--color-brass)]/30">
-            <span className="text-[var(--color-brass)] text-sm font-medium tracking-wide">
-              Est. 2019 · Waco, TX
+          <div className="mt-8 inline-flex items-center gap-3 py-2 px-4 border-3 border-[var(--color-amber)] relative z-1">
+            <span className="text-[var(--color-amber)] text-sm font-bold tracking-wide uppercase">
+              Est. 2019 &middot; Waco, TX
             </span>
           </div>
         </div>
@@ -73,10 +73,10 @@ export function SiteFooter() {
       {/* Bottom Row */}
       <div className="footer-bottom">
         <p className="footer-legal">
-          © {currentYear} Havi&apos;s Candy Co. All rights reserved.
+          &copy; {currentYear} Havi&apos;s Candy Co. All rights reserved.
         </p>
         <p className="footer-legal">
-          Handcrafted in Waco, Texas with ♥ and sorghum
+          Handcrafted in Waco, Texas with &hearts; and sorghum
         </p>
       </div>
     </footer>

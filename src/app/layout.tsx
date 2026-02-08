@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Monoton, Carter_One, DM_Sans } from "next/font/google";
 
 import { siteConfig, wacoKeywordTargets } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const monoton = Monoton({
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-fraunces",
+  variable: "--font-monoton",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const carterOne = Carter_One({
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-jakarta",
+  variable: "--font-carter-one",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${monoton.variable} ${carterOne.variable} ${dmSans.variable}`}>
       <body>{children}</body>
     </html>
   );

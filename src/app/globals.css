@@ -1,93 +1,101 @@
 @import "tailwindcss";
 
 /* ============================================================
-   HAVI'S CANDY CO. — WARM & PLAYFUL DESIGN SYSTEM
-   Handmade candy shop warmth meets strong modern design
+   HAVI'S CANDY CO. — RETRO CANDY SHOP DESIGN SYSTEM
+   Bold, sharp, printed CANDY energy
    ============================================================ */
 
 /* Tailwind v4 theme extension */
 @theme {
-  --font-family-display: var(--font-fraunces), "Georgia", serif;
-  --font-family-body: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-display: var(--font-monoton), cursive;
+  --font-family-heading: var(--font-carter-one), cursive;
+  --font-family-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 :root {
   /* ==============================================================
-     COLOR PALETTE — Sweet, warm, inviting candy tones
+     COLOR PALETTE — Candy Shop Vivid
      ============================================================== */
 
-  /* Warm Backgrounds */
-  --color-vanilla-cream: #fff9f2;
-  --color-honey-cream: #fff0e0;
-  --color-butter: #fffdf7;
-  --color-peach-cream: #fff5eb;
+  /* Backgrounds */
+  --color-vanilla-cream: #fdf6ec;
+  --color-honey-cream: #faf0de;
+  --color-butter: #fdf8f0;
+  --color-peach-cream: #fdf6ec;
 
   /* Backward-compat aliases used in JSX */
-  --color-parchment: #fff9f2;
-  --color-aged-paper: #fff0e0;
-  --color-cream: #fffdf7;
-  --color-linen: #fff5eb;
+  --color-parchment: #fdf6ec;
+  --color-aged-paper: #faf0de;
+  --color-cream: #fdf8f0;
+  --color-linen: #fdf6ec;
 
-  /* Rich Text */
-  --color-chocolate: #2c1810;
-  --color-cocoa: #4a3228;
-  --color-mocha: #6b4d3a;
-  --color-toffee: #9b8576;
+  /* Rich Text — Deep Chocolate */
+  --color-chocolate: #1a0a00;
+  --color-cocoa: #3a1a08;
+  --color-mocha: #5a3a20;
+  --color-toffee: #8a6a50;
 
   /* Aliases */
-  --color-espresso: #2c1810;
-  --color-walnut: #4a3228;
-  --color-coffee: #6b4d3a;
-  --color-taupe: #9b8576;
-  --color-ink: #2c1810;
-  --color-muted: #9b8576;
+  --color-espresso: #1a0a00;
+  --color-walnut: #3a1a08;
+  --color-coffee: #5a3a20;
+  --color-taupe: #8a6a50;
+  --color-ink: #1a0a00;
+  --color-muted: #8a6a50;
 
-  /* Primary — Warm Coral */
-  --color-coral: #e06b50;
-  --color-coral-dark: #c4533a;
-  --color-coral-light: #f4998a;
-  --color-coral-pale: #ffe8e2;
+  /* Primary — Cherry Red */
+  --color-coral: #c41e3a;
+  --color-coral-dark: #a01830;
+  --color-coral-light: #e04060;
+  --color-coral-pale: #fde8ec;
 
-  --color-caramel: #e06b50;
-  --color-caramel-dark: #c4533a;
-  --color-caramel-light: #f4998a;
-  --color-caramel-pale: #ffe8e2;
+  --color-caramel: #c41e3a;
+  --color-caramel-dark: #a01830;
+  --color-caramel-light: #e04060;
+  --color-caramel-pale: #fde8ec;
 
-  /* Secondary — Golden Amber */
-  --color-amber: #e8a549;
-  --color-amber-dark: #cc8a2e;
-  --color-amber-light: #ffd68a;
-  --color-amber-pale: #fff3dc;
+  /* Secondary — Butterscotch */
+  --color-amber: #daa520;
+  --color-amber-dark: #b8860b;
+  --color-amber-light: #f0c040;
+  --color-amber-pale: #fdf3d0;
 
-  --color-brass: #e8a549;
-  --color-brass-dark: #cc8a2e;
-  --color-bronze: #cc8a2e;
-  --color-copper: #e8a549;
-  --color-honey: #e8a549;
-  --color-vanilla: #ffd68a;
+  --color-brass: #daa520;
+  --color-brass-dark: #b8860b;
+  --color-bronze: #b8860b;
+  --color-copper: #daa520;
+  --color-honey: #daa520;
+  --color-vanilla: #f0c040;
+
+  /* Accent — Mint Green */
+  --color-mint: #3eb489;
+  --color-mint-dark: #2e9a72;
+  --color-mint-light: #60d4a8;
+  --color-mint-pale: #e8f8f0;
 
   /* Delight — Warm Rose */
   --color-rose: #e8a4a4;
   --color-rose-light: #fff0f0;
 
   /* Utility Colors */
-  --color-border: #ede4d9;
-  --color-border-warm: #d9cdbe;
-  --color-success: #4a8c6a;
-  --color-danger: #d14f4f;
+  --color-border: #d4c4b0;
+  --color-border-warm: #c0a888;
+  --color-success: #3eb489;
+  --color-danger: #c41e3a;
 
   /* Dark */
-  --color-molasses: #1a0f0a;
-  --color-dark: #1a0f0a;
-  --color-dark-surface: #2c1810;
+  --color-molasses: #1a0a00;
+  --color-dark: #1a0a00;
+  --color-dark-surface: #2a1408;
 
   /* ==============================================================
      TYPOGRAPHY
      ============================================================== */
 
-  --font-display: var(--font-fraunces), "Georgia", serif;
-  --font-body: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-ui: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-monoton), cursive;
+  --font-heading: var(--font-carter-one), cursive;
+  --font-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Type Scale */
   --text-xs: 0.75rem;
@@ -120,37 +128,33 @@
   --space-32: 8rem;
 
   /* ==============================================================
-     BORDER RADIUS — Soft, friendly, rounded
+     BORDER RADIUS — Sharp, printed, candy packaging
      ============================================================== */
 
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-2xl: 36px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
   --radius-full: 9999px;
 
   /* ==============================================================
-     SHADOWS — Warm-tinted depth with personality
+     SHADOWS — Hard offset blocks (vintage print)
      ============================================================== */
 
-  --shadow-xs: 0 1px 3px rgba(44, 24, 16, 0.04);
-  --shadow-sm: 0 2px 8px rgba(44, 24, 16, 0.06);
-  --shadow-md: 0 4px 20px rgba(44, 24, 16, 0.08);
-  --shadow-lg: 0 8px 32px rgba(44, 24, 16, 0.1);
-  --shadow-xl: 0 20px 50px rgba(44, 24, 16, 0.14);
-  --shadow-inset: inset 0 2px 4px rgba(44, 24, 16, 0.06);
+  --shadow-xs: 2px 2px 0 var(--color-dark);
+  --shadow-sm: 3px 3px 0 var(--color-dark);
+  --shadow-md: 5px 5px 0 var(--color-dark);
+  --shadow-lg: 7px 7px 0 var(--color-dark);
+  --shadow-xl: 10px 10px 0 var(--color-dark);
+  --shadow-inset: inset 0 2px 4px rgba(26, 10, 0, 0.1);
 
-  --shadow-card:
-    0 2px 16px rgba(44, 24, 16, 0.06),
-    0 0 0 1px rgba(44, 24, 16, 0.04);
-  --shadow-card-hover:
-    0 16px 48px rgba(224, 107, 80, 0.14),
-    0 0 0 1px rgba(224, 107, 80, 0.1);
+  --shadow-card: 5px 5px 0 var(--color-dark);
+  --shadow-card-hover: 8px 8px 0 var(--color-dark);
 
-  /* Colored glow shadows for delight */
-  --shadow-coral-glow: 0 8px 30px rgba(224, 107, 80, 0.2);
-  --shadow-amber-glow: 0 8px 30px rgba(232, 165, 73, 0.2);
+  /* Colored hard shadows */
+  --shadow-coral-glow: 5px 5px 0 var(--color-coral);
+  --shadow-amber-glow: 5px 5px 0 var(--color-amber);
 
   /* ==============================================================
      ANIMATION & MOTION
@@ -193,18 +197,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle warm paper grain — very light */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
 a {
   color: inherit;
   text-decoration-skip-ink: auto;
@@ -222,51 +214,181 @@ img {
 }
 
 /* ==================================================================
-   TYPOGRAPHY — Warm, characterful, friendly
+   CSS PATTERNS — Pure CSS, no images
    ================================================================== */
 
-/* Display Headlines — Big, warm Fraunces with natural character */
+/* Diagonal Stripes — Hero background */
+.pattern-stripes {
+  position: relative;
+}
+
+.pattern-stripes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(196, 30, 58, 0.04) 20px,
+    rgba(196, 30, 58, 0.04) 40px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Checkerboard — Product showcase, footer */
+.pattern-checkerboard {
+  position: relative;
+}
+
+.pattern-checkerboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(26, 10, 0, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(26, 10, 0, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(26, 10, 0, 0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(26, 10, 0, 0.03) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Polka Dots — Craft section */
+.pattern-dots {
+  position: relative;
+}
+
+.pattern-dots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(196, 30, 58, 0.06) 2px, transparent 2px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Awning Stripes — Header, locations */
+.pattern-awning {
+  position: relative;
+}
+
+.pattern-awning::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-coral) 0px,
+    var(--color-coral) 12px,
+    var(--color-vanilla-cream) 12px,
+    var(--color-vanilla-cream) 24px
+  );
+  z-index: 10;
+}
+
+/* Scalloped Edge — Section dividers */
+.scalloped-top {
+  position: relative;
+}
+
+.scalloped-top::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: radial-gradient(circle at 10px -5px, transparent 14px, var(--color-dark) 15px);
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+.scalloped-divider {
+  width: 100%;
+  height: 20px;
+  background: radial-gradient(circle at 10px 15px, var(--color-vanilla-cream) 14px, transparent 15px);
+  background-size: 20px 20px;
+  background-color: var(--color-vanilla-cream);
+  position: relative;
+  z-index: 1;
+}
+
+/* Lined Paper — Contact section */
+.pattern-lined {
+  position: relative;
+}
+
+.pattern-lined::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(196, 30, 58, 0.08) 31px,
+    rgba(196, 30, 58, 0.08) 32px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==================================================================
+   TYPOGRAPHY — Bold, characterful, candy energy
+   ================================================================== */
+
+/* Display Headlines — Monoton neon marquee (HERO ONLY) */
 .display-heading {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--color-chocolate);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-coral);
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--color-dark);
   text-wrap: balance;
 }
 
 .display-heading em {
-  font-style: italic;
-  color: var(--color-coral);
+  font-style: normal;
+  color: var(--color-amber);
+  text-shadow: 4px 4px 0 var(--color-dark);
 }
 
-/* Section Titles */
+/* Section Titles — Carter One */
 .section-heading {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 400;
   font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: var(--color-chocolate);
   text-wrap: balance;
 }
 
 /* Products page title */
 .section-title {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 400;
   font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--color-chocolate);
   text-wrap: balance;
 }
 
 /* Subheadings */
 .subheading {
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 400;
   font-size: var(--text-xl);
   line-height: 1.4;
   color: var(--color-cocoa);
@@ -303,18 +425,17 @@ img {
   color: var(--color-mocha);
 }
 
-/* Lead Paragraph — Warm italic intro */
+/* Lead Paragraph */
 .lead-text {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-xl);
   font-weight: 400;
-  font-style: italic;
   line-height: 1.6;
   color: var(--color-cocoa);
 }
 
 /* ===============================================================
-   OVERLINE / EYEBROW — Warm pill-style labels
+   OVERLINE / EYEBROW — Ticket Stub labels
    =============================================================== */
 
 .overline {
@@ -325,61 +446,69 @@ img {
   font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--color-coral);
-  background: var(--color-coral-pale);
+  background: transparent;
   padding: var(--space-1) var(--space-4);
-  border-radius: var(--radius-full);
+  border: 2px dashed var(--color-coral);
+  border-radius: var(--radius-sm);
+  position: relative;
 }
 
+/* Ticket punch holes */
 .overline::before,
 .overline::after {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--color-vanilla-cream);
+  border: 2px dashed var(--color-coral);
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
-/* Simpler variant without bg */
+.overline::before {
+  left: -6px;
+}
+
+.overline::after {
+  right: -6px;
+}
+
+/* Simpler variant without border */
 .overline-simple {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   color: var(--color-coral);
 }
 
 /* ==================================================================
-   LOGO — Friendly, warm brand mark
+   LOGO — Carter One with candy jar
    ================================================================== */
 
 .logo {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  gap: var(--space-3);
   text-decoration: none;
 }
 
 .logo-main {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(1.4rem, 3vw, 1.75rem);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-chocolate);
   line-height: 1;
   position: relative;
 }
 
 .logo-main::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg,
-      var(--color-coral) 0%,
-      var(--color-amber) 50%,
-      var(--color-coral-light) 100%);
-  border-radius: var(--radius-full);
-  opacity: 0.7;
+  display: none;
 }
 
 .logo-tagline {
@@ -408,8 +537,72 @@ img {
   font-size: var(--text-sm);
 }
 
+/* Candy Jar — Pure CSS */
+.candy-jar {
+  position: relative;
+  width: 28px;
+  height: 24px;
+  border: 2px solid var(--color-chocolate);
+  border-radius: 0 0 6px 6px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  overflow: hidden;
+}
+
+/* Jar lid */
+.candy-jar::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -2px;
+  right: -2px;
+  height: 6px;
+  background: var(--color-chocolate);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Candy pieces inside */
+.candy-jar .candy-piece {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
+}
+
+.candy-jar .candy-piece:nth-child(1) {
+  background: var(--color-coral);
+}
+
+.candy-jar .candy-piece:nth-child(2) {
+  background: var(--color-amber);
+}
+
+.candy-jar .candy-piece:nth-child(3) {
+  background: var(--color-mint);
+}
+
+/* Candy spill on hover */
+.logo:hover .candy-jar .candy-piece {
+  animation: candySpill 0.6s var(--ease-out) forwards;
+}
+
+.logo:hover .candy-jar .candy-piece:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.logo:hover .candy-jar .candy-piece:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.logo:hover .candy-jar .candy-piece:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
 /* ==================================================================
-   DECORATIVE ORNAMENTS — Softer, friendlier dividers
+   DECORATIVE ORNAMENTS — Bold dividers
    ================================================================== */
 
 /* Horizontal ornament rule */
@@ -427,12 +620,9 @@ img {
   content: "";
   flex: 1;
   max-width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--color-coral-pale) 50%,
-      transparent 100%);
-  border-radius: var(--radius-full);
+  height: 3px;
+  background: var(--color-coral);
+  border-radius: 0;
 }
 
 .ornament-dots {
@@ -444,20 +634,20 @@ img {
 .ornament-dots::after,
 .ornament-dots span {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--color-coral-light);
+  background: var(--color-coral);
 }
 
 .ornament-dots::before {
-  opacity: 0.4;
+  opacity: 0.6;
   background: var(--color-amber);
 }
 
 .ornament-dots::after {
-  opacity: 0.4;
-  background: var(--color-amber);
+  opacity: 0.6;
+  background: var(--color-mint);
 }
 
 /* Products page ornament */
@@ -473,57 +663,28 @@ img {
   content: "";
   flex: 1;
   max-width: 120px;
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--color-border) 50%,
-      transparent 100%);
-  border-radius: var(--radius-full);
+  height: 3px;
+  background: var(--color-coral);
+  border-radius: 0;
 }
 
 .ornament-icon {
-  color: var(--color-coral-light);
+  color: var(--color-coral);
   font-size: var(--text-lg);
 }
 
-/* Flourish divider */
+/* Flourish divider — now a scalloped wave */
 .flourish-divider {
-  position: relative;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: var(--space-8) auto;
-  max-width: 200px;
-}
-
-.flourish-divider::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--color-coral-light);
-  border-radius: 50%;
+  width: 100%;
+  height: 20px;
+  background: radial-gradient(circle at 10px 15px, var(--color-vanilla-cream) 14px, transparent 15px);
+  background-size: 20px 20px;
   position: relative;
   z-index: 1;
 }
 
-.flourish-divider::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--color-border) 30%,
-      var(--color-border) 70%,
-      transparent 100%);
-  border-radius: var(--radius-full);
-}
-
 /* ==================================================================
-   HERITAGE BADGE — Warm, rounded vintage seal
+   HERITAGE BADGE → STARBURST
    ================================================================== */
 
 .heritage-badge {
@@ -531,23 +692,24 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  border: 2px solid var(--color-coral);
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
   text-align: center;
   padding: var(--space-3);
   position: relative;
-  background: var(--color-butter);
-  box-shadow: 0 4px 20px rgba(224, 107, 80, 0.1);
+  background: var(--color-amber);
+  color: var(--color-dark);
+  clip-path: polygon(
+    50% 0%, 61% 11%, 75% 3%, 79% 18%, 95% 20%, 90% 35%,
+    100% 50%, 90% 65%, 95% 80%, 79% 82%, 75% 97%, 61% 89%,
+    50% 100%, 39% 89%, 25% 97%, 21% 82%, 5% 80%, 10% 65%,
+    0% 50%, 10% 35%, 5% 20%, 21% 18%, 25% 3%, 39% 11%
+  );
+  transform: rotate(-8deg);
 }
 
 .heritage-badge::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border: 1px dashed var(--color-coral-pale);
-  border-radius: 50%;
+  display: none;
 }
 
 .heritage-badge-label {
@@ -556,14 +718,14 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-toffee);
+  color: var(--color-dark);
 }
 
 .heritage-badge-year {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-2xl);
-  font-weight: 600;
-  color: var(--color-coral);
+  font-weight: 400;
+  color: var(--color-dark);
   line-height: 1;
   margin: 2px 0;
 }
@@ -572,7 +734,7 @@ img {
   font-family: var(--font-body);
   font-size: 9px;
   font-weight: 500;
-  color: var(--color-mocha);
+  color: var(--color-dark);
 }
 
 /* Heritage stamp */
@@ -581,8 +743,8 @@ img {
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-5);
-  border: 2px solid var(--color-coral);
-  border-radius: var(--radius-lg);
+  border: 3px solid var(--color-coral);
+  border-radius: var(--radius-sm);
   background: var(--color-butter);
 }
 
@@ -596,7 +758,7 @@ img {
 }
 
 /* ==================================================================
-   RIBBON & VINTAGE LABELS — Playful badge treatments
+   RIBBON & VINTAGE LABELS — Sharp, bold badges
    ================================================================== */
 
 .ribbon-label {
@@ -608,12 +770,12 @@ img {
   font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-radius: var(--radius-full);
-  box-shadow: 0 2px 8px rgba(224, 107, 80, 0.25);
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--color-dark);
 }
 
-/* No clip-path arrows — just clean rounded pills */
 .ribbon-label::before,
 .ribbon-label::after {
   display: none;
@@ -622,8 +784,8 @@ img {
 /* Gold variant */
 .ribbon-label-gold {
   background: var(--color-amber);
-  color: var(--color-chocolate);
-  box-shadow: 0 2px 8px rgba(232, 165, 73, 0.25);
+  color: var(--color-dark);
+  box-shadow: var(--shadow-sm);
 }
 
 .ribbon-label-gold::before,
@@ -636,18 +798,19 @@ img {
   display: inline-block;
   padding: var(--space-1) var(--space-3);
   background: var(--color-amber);
-  color: var(--color-chocolate);
+  color: var(--color-dark);
   font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-radius: var(--radius-full);
-  box-shadow: 0 2px 8px rgba(232, 165, 73, 0.25);
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--color-dark);
 }
 
 /* ==================================================================
-   BUTTON SYSTEM — Rounded, warm, bouncy
+   BUTTON SYSTEM — Hard border, offset shadow, sharp corners
    ================================================================== */
 
 .btn {
@@ -657,71 +820,69 @@ img {
   gap: var(--space-2);
   min-height: 50px;
   padding: var(--space-3) var(--space-8);
-  border: none;
-  border-radius: var(--radius-full);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  box-shadow: var(--shadow-md);
   transition:
-    transform var(--duration-normal) var(--ease-bounce),
-    box-shadow var(--duration-normal) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out);
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
 }
 
-/* Primary Button — Warm coral with bounce */
+/* Primary Button — Cherry Red */
 .btn-primary {
   background: var(--color-coral);
   color: white;
-  box-shadow: 0 4px 16px rgba(224, 107, 80, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  background: var(--color-coral-dark);
-  box-shadow: 0 8px 28px rgba(224, 107, 80, 0.35);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-primary:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: 0 2px 8px rgba(224, 107, 80, 0.25);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-dark);
 }
 
-/* Secondary Button — Outlined, friendly */
+/* Secondary Button — Butterscotch */
 .btn-secondary {
-  background: transparent;
-  color: var(--color-chocolate);
-  border: 2px solid var(--color-chocolate);
-  box-shadow: none;
+  background: var(--color-amber);
+  color: var(--color-dark);
 }
 
 .btn-secondary:hover {
-  background: var(--color-chocolate);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary:active {
-  transform: translateY(1px);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-dark);
 }
 
-/* Ghost Button — Subtle */
+/* Ghost Button — Transparent with border */
 .btn-ghost {
   background: transparent;
-  color: var(--color-coral);
-  border: 2px solid var(--color-border);
-  box-shadow: none;
+  color: var(--color-dark);
 }
 
 .btn-ghost:hover {
   background: var(--color-coral-pale);
-  border-color: var(--color-coral-light);
-  transform: translateY(-1px);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-ghost:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-dark);
 }
 
 /* Small Button */
@@ -740,107 +901,95 @@ img {
   padding: var(--space-3) var(--space-8);
   background: var(--color-coral);
   color: white;
-  border: none;
-  border-radius: var(--radius-full);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(224, 107, 80, 0.3);
+  box-shadow: var(--shadow-md);
   transition:
-    transform var(--duration-normal) var(--ease-bounce),
-    box-shadow var(--duration-normal) var(--ease-out),
-    background-color var(--duration-fast) var(--ease-out);
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
 }
 
 .retro-button:hover {
-  transform: translateY(-2px) scale(1.02);
-  background: var(--color-coral-dark);
-  box-shadow: 0 8px 28px rgba(224, 107, 80, 0.35);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .retro-button:active {
-  transform: translateY(1px) scale(0.98);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-dark);
 }
 
 .retro-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ==================================================================
-   CARD SYSTEM — Rounded, warm, tactile
+   CARD SYSTEM — Hard border, offset shadow, near-sharp corners
    ================================================================== */
 
 .card {
   position: relative;
   background: var(--color-butter);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   padding: var(--space-8);
   box-shadow: var(--shadow-card);
   transition:
-    transform var(--duration-normal) var(--ease-bounce),
-    box-shadow var(--duration-normal) var(--ease-out);
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translate(-2px, -2px);
   box-shadow: var(--shadow-card-hover);
 }
 
-/* Card with warm corner accents */
+/* Card with scalloped stamp border (postcard style) */
 .card-framed {
   position: relative;
   background: var(--color-butter);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   padding: var(--space-10);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
+/* Scalloped inner border for postcard feel */
 .card-framed::before {
   content: "";
   position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 100px;
-  height: 100px;
-  background: var(--color-coral-pale);
-  border-radius: 50%;
-  opacity: 0.5;
+  inset: 8px;
+  border: 2px dashed var(--color-coral);
+  border-radius: var(--radius-sm);
   pointer-events: none;
 }
 
 .card-framed::after {
-  content: "";
-  position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 80px;
-  height: 80px;
-  background: var(--color-amber-pale);
-  border-radius: 50%;
-  opacity: 0.4;
-  pointer-events: none;
+  display: none;
 }
 
 /* Retro card (products page) */
 .retro-card-fancy {
   background: var(--color-butter);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
 /* ==================================================================
-   PRODUCT CARD — Shop-ready with warmth and delight
+   PRODUCT CARD — Hard border, offset shadow, alternating rotations
    ================================================================== */
 
 .product-card {
@@ -848,18 +997,34 @@ img {
   display: flex;
   flex-direction: column;
   background: var(--color-butter);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   overflow: hidden;
   transition:
-    transform var(--duration-normal) var(--ease-bounce),
-    box-shadow var(--duration-slow) var(--ease-out);
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-border);
+  border: 3px solid var(--color-dark);
+}
+
+/* Alternating rotation on cards */
+.product-card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.product-card:nth-child(even) {
+  transform: rotate(1deg);
 }
 
 .product-card:hover {
-  transform: translateY(-8px) rotate(-0.5deg);
+  transform: rotate(0deg) translate(-2px, -2px);
   box-shadow: var(--shadow-card-hover);
+}
+
+/* Wiggle on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .product-card:hover {
+    animation: wiggle 0.4s var(--ease-out);
+  }
 }
 
 /* Homepage variant */
@@ -926,9 +1091,9 @@ img {
 }
 
 .product-card-name {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-xl);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-chocolate);
   margin: 0 0 var(--space-2);
   line-height: 1.3;
@@ -953,7 +1118,7 @@ img {
 }
 
 /* ==================================================================
-   PRICE DISPLAYS — Clear, warm, confident
+   PRICE DISPLAYS
    ================================================================== */
 
 /* Homepage price */
@@ -961,8 +1126,8 @@ img {
   display: inline-flex;
   align-items: baseline;
   gap: 2px;
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 400;
 }
 
 .price-currency {
@@ -980,8 +1145,8 @@ img {
   display: inline-flex;
   align-items: baseline;
   gap: 2px;
-  font-family: var(--font-display);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 400;
 }
 
 .price-tag-currency {
@@ -995,7 +1160,7 @@ img {
 }
 
 /* ==================================================================
-   STATUS INDICATORS — Friendly badges
+   STATUS INDICATORS — Mint green for in-stock
    ================================================================== */
 
 .status-available,
@@ -1006,10 +1171,13 @@ img {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   font-weight: 700;
-  color: var(--color-success);
-  background: rgba(74, 140, 106, 0.08);
+  color: var(--color-mint-dark);
+  background: var(--color-mint-pale);
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-mint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .status-available::before,
@@ -1017,7 +1185,7 @@ img {
   content: "";
   width: 7px;
   height: 7px;
-  background: currentColor;
+  background: var(--color-mint);
   border-radius: 50%;
 }
 
@@ -1031,11 +1199,12 @@ img {
   color: var(--color-toffee);
   background: rgba(155, 133, 118, 0.08);
   padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-border);
 }
 
 /* ==================================================================
-   FILTER PILLS — Rounded, bouncy selectors
+   FILTER PILLS — Hard-edged selectors
    ================================================================== */
 
 .pill,
@@ -1045,46 +1214,51 @@ img {
   justify-content: center;
   min-height: 42px;
   padding: var(--space-2) var(--space-6);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-full);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
   background: transparent;
   font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-mocha);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-dark);
   cursor: pointer;
+  box-shadow: 3px 3px 0 var(--color-dark);
   transition:
-    all var(--duration-fast) var(--ease-bounce);
+    all var(--duration-fast) var(--ease-out);
 }
 
 .pill:hover,
 .filter-pill:hover {
-  border-color: var(--color-coral);
-  color: var(--color-coral);
-  transform: translateY(-1px);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--color-dark);
+  background: var(--color-coral-pale);
 }
 
 .pill[data-active="true"],
 .filter-pill[data-active="true"] {
   background: var(--color-coral);
-  border-color: var(--color-coral);
+  border-color: var(--color-dark);
   color: white;
-  box-shadow: 0 4px 12px rgba(224, 107, 80, 0.25);
-  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 var(--color-dark);
+  transform: none;
 }
 
 /* ==================================================================
-   NAVIGATION — Clean, warm header
+   NAVIGATION — Clean, bold header
    ================================================================== */
 
 .nav-link {
   position: relative;
   font-family: var(--font-ui);
   font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-mocha);
+  font-weight: 700;
+  color: var(--color-dark);
   text-decoration: none;
   padding: var(--space-2) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   transition: color var(--duration-fast) var(--ease-out);
 }
 
@@ -1094,10 +1268,10 @@ img {
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-coral), var(--color-amber));
-  transition: width var(--duration-normal) var(--ease-bounce);
-  border-radius: var(--radius-full);
+  height: 4px;
+  background: var(--color-coral);
+  transition: width var(--duration-normal) var(--ease-out);
+  border-radius: 0;
 }
 
 .nav-link:hover {
@@ -1109,7 +1283,7 @@ img {
 }
 
 /* ==================================================================
-   SECTION STYLES — Warm, generous layouts
+   SECTION STYLES
    ================================================================== */
 
 .section {
@@ -1124,15 +1298,23 @@ img {
   background: var(--color-honey-cream);
 }
 
+/* Dark section (Our Story "Chalkboard") */
 .section-dark {
-  background: linear-gradient(170deg, var(--color-dark-surface) 0%, var(--color-molasses) 100%);
+  background: var(--color-dark);
   color: var(--color-cream);
 }
 
 .section-dark .overline,
 .section-dark .overline-simple {
   color: var(--color-amber);
-  background: rgba(232, 165, 73, 0.15);
+  background: transparent;
+  border-color: var(--color-amber);
+}
+
+.section-dark .overline::before,
+.section-dark .overline::after {
+  background: var(--color-dark);
+  border-color: var(--color-amber);
 }
 
 .section-dark .display-heading,
@@ -1141,11 +1323,17 @@ img {
 }
 
 .section-dark .body-text {
-  color: rgba(255, 249, 242, 0.8);
+  color: rgba(253, 248, 240, 0.8);
+}
+
+/* Mint section (Locations) */
+.section-mint {
+  background: var(--color-mint-pale);
+  position: relative;
 }
 
 /* ==================================================================
-   TESTIMONIAL — Big, warm, inviting quote
+   TESTIMONIAL — Neon Sign effect
    ================================================================== */
 
 .testimonial {
@@ -1157,22 +1345,27 @@ img {
 }
 
 .testimonial-quote {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));
   font-weight: 400;
-  font-style: italic;
   line-height: 1.5;
   color: var(--color-cream);
   margin: 0;
   text-wrap: balance;
+  text-shadow:
+    0 0 20px rgba(196, 30, 58, 0.5),
+    0 0 40px rgba(196, 30, 58, 0.3),
+    0 0 80px rgba(196, 30, 58, 0.15);
 }
 
+/* Huge faded quotation marks */
 .testimonial-quote::before {
   content: "\201C";
   display: block;
-  font-size: 5rem;
-  line-height: 0.8;
-  color: var(--color-coral-light);
+  font-family: var(--font-heading);
+  font-size: 10rem;
+  line-height: 0.5;
+  color: rgba(196, 30, 58, 0.15);
   margin-bottom: var(--space-4);
   font-style: normal;
 }
@@ -1192,15 +1385,44 @@ img {
 }
 
 /* ==================================================================
-   FOOTER — Warm dark chocolate base
+   FOOTER — Candy Shop Floor (dark checkerboard)
    ================================================================== */
 
 .site-footer {
-  background: linear-gradient(170deg, var(--color-dark-surface) 0%, var(--color-molasses) 100%);
+  background: var(--color-dark);
   color: var(--color-cream);
   padding: var(--space-16) var(--space-6) var(--space-8);
-  border-top-left-radius: var(--radius-2xl);
-  border-top-right-radius: var(--radius-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scalloped top edge */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: radial-gradient(circle at 10px -5px, transparent 14px, var(--color-vanilla-cream) 15px);
+  background-size: 20px 20px;
+  z-index: 1;
+}
+
+/* Checkerboard floor pattern */
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(253, 248, 240, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(253, 248, 240, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(253, 248, 240, 0.03) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(253, 248, 240, 0.03) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .footer-grid {
@@ -1208,6 +1430,8 @@ img {
   gap: var(--space-10);
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -1217,9 +1441,9 @@ img {
 }
 
 .footer-brand {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-2xl);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-cream);
   margin-bottom: var(--space-4);
 }
@@ -1227,15 +1451,15 @@ img {
 .footer-description {
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: rgba(255, 249, 242, 0.65);
+  color: rgba(253, 248, 240, 0.65);
   line-height: 1.7;
   max-width: 280px;
 }
 
 .footer-heading {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-amber);
   margin-bottom: var(--space-4);
 }
@@ -1249,7 +1473,7 @@ img {
 .footer-link {
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: rgba(255, 249, 242, 0.6);
+  color: rgba(253, 248, 240, 0.6);
   text-decoration: none;
   transition:
     color var(--duration-fast) var(--ease-out),
@@ -1263,13 +1487,11 @@ img {
 }
 
 .footer-divider {
-  height: 2px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(255, 249, 242, 0.1) 50%,
-      transparent 100%);
+  height: 3px;
+  background: rgba(253, 248, 240, 0.1);
   margin: var(--space-10) 0;
-  border-radius: var(--radius-full);
+  position: relative;
+  z-index: 1;
 }
 
 .footer-bottom {
@@ -1280,12 +1502,14 @@ img {
   gap: var(--space-4);
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-legal {
   font-family: var(--font-ui);
   font-size: var(--text-xs);
-  color: rgba(255, 249, 242, 0.4);
+  color: rgba(253, 248, 240, 0.4);
 }
 
 /* ==================================================================
@@ -1316,23 +1540,40 @@ img {
 }
 
 /* ==================================================================
-   ANIMATIONS — Bouncy, playful, delightful
+   ANIMATIONS — Slide, stamp, neon, wiggle, candy spill
    ================================================================== */
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Slide In from Left */
   .animate-in {
-    animation: animateIn 0.7s var(--ease-spring) forwards;
+    animation: slideInLeft 0.7s var(--ease-spring) forwards;
     opacity: 0;
   }
 
-  @keyframes animateIn {
+  @keyframes slideInLeft {
     from {
       opacity: 0;
-      transform: translateY(30px) scale(0.97);
+      transform: translateX(-40px) rotate(-2deg);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+
+  /* Alternate: slide from right on even items */
+  .animate-in:nth-child(even) {
+    animation-name: slideInRight;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px) rotate(2deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
     }
   }
 
@@ -1341,14 +1582,64 @@ img {
   .animate-delay-3 { animation-delay: 0.35s; }
   .animate-delay-4 { animation-delay: 0.5s; }
 
-  /* Gentle floating for badges */
-  @keyframes gentleFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-6px) rotate(1deg); }
+  /* Stamp In — for starburst badge */
+  .animate-float {
+    animation: stampIn 0.8s var(--ease-bounce) forwards;
   }
 
-  .animate-float {
-    animation: gentleFloat 4s ease-in-out infinite;
+  @keyframes stampIn {
+    0% {
+      opacity: 0;
+      transform: scale(2) rotate(-20deg);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(0.9) rotate(-5deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(-8deg);
+    }
+  }
+
+  /* Neon Flicker — testimonial quote glow */
+  @keyframes neonFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow:
+        0 0 20px rgba(196, 30, 58, 0.5),
+        0 0 40px rgba(196, 30, 58, 0.3),
+        0 0 80px rgba(196, 30, 58, 0.15);
+    }
+    20%, 24%, 55% {
+      text-shadow:
+        0 0 10px rgba(196, 30, 58, 0.2),
+        0 0 20px rgba(196, 30, 58, 0.1);
+    }
+  }
+
+  .neon-flicker {
+    animation: neonFlicker 4s ease-in-out infinite;
+  }
+
+  /* Wiggle — card hover */
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  /* Candy Spill — logo hover */
+  @keyframes candySpill {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
   }
 
   /* Products page animations */
@@ -1360,11 +1651,11 @@ img {
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(24px) scale(0.97);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
   }
 
@@ -1374,15 +1665,24 @@ img {
 }
 
 /* ==================================================================
-   HERO BACKGROUND — Warm, organic, candy-inspired
+   HERO BACKGROUND — Diagonal stripes + warm gradient
    ================================================================== */
 
 .candy-counter-bg {
   position: relative;
   background:
-    radial-gradient(ellipse at 20% 0%, var(--color-coral-pale) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, var(--color-amber-pale) 0%, transparent 40%),
-    var(--color-vanilla-cream);
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(196, 30, 58, 0.04) 20px,
+      rgba(196, 30, 58, 0.04) 40px
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-vanilla-cream) 0%,
+      var(--color-honey-cream) 100%
+    );
 }
 
 .candy-counter-bg::before {
@@ -1391,23 +1691,153 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg,
-      var(--color-coral) 0%,
-      var(--color-amber) 50%,
-      var(--color-coral-light) 100%);
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-coral) 0px,
+    var(--color-coral) 12px,
+    var(--color-amber) 12px,
+    var(--color-amber) 24px
+  );
 }
 
 /* ==================================================================
-   CARD QUOTE — For testimonial-style content
+   CARD QUOTE — Bold left border treatment
    ================================================================== */
 
 .card-quote {
   position: relative;
   background: var(--color-butter);
-  border-left: 4px solid var(--color-coral);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  border-left: 6px solid var(--color-coral);
+  border: 3px solid var(--color-dark);
+  border-left: 6px solid var(--color-coral);
+  border-radius: var(--radius-md);
   padding: var(--space-8) var(--space-10);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==================================================================
+   CRAFT CARD — Recipe card style (red top border, staggered)
+   ================================================================== */
+
+.craft-card {
+  position: relative;
+  background: var(--color-butter);
+  border: 3px solid var(--color-dark);
+  border-top: 6px solid var(--color-coral);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.craft-card:nth-child(2) {
+  transform: translateY(20px);
+}
+
+.craft-card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.craft-card:nth-child(even) {
+  transform: rotate(1deg) translateY(20px);
+}
+
+.craft-card:hover {
+  transform: translate(-2px, -2px) rotate(0deg);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ==================================================================
+   LOCATION CARD — Cork board pin style
+   ================================================================== */
+
+.location-card {
+  position: relative;
+  background: var(--color-butter);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+/* Cork board pin */
+.location-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--color-coral);
+  border: 2px solid var(--color-dark);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Random-ish rotations */
+.location-card:nth-child(1) {
+  transform: rotate(-1.5deg);
+}
+
+.location-card:nth-child(2) {
+  transform: rotate(1deg);
+}
+
+.location-card:nth-child(3) {
+  transform: rotate(-0.5deg);
+}
+
+.location-card:hover {
+  transform: translate(-2px, -2px) rotate(0deg);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ==================================================================
+   POSTCARD — Contact section styling
+   ================================================================== */
+
+.postcard {
+  position: relative;
+  background: var(--color-butter);
+  border: 3px solid var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-10);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Scalloped stamp border */
+.postcard::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 2px dashed var(--color-coral);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+/* Faux postmark */
+.postcard::after {
+  content: "WACO TX";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(196, 30, 58, 0.2);
+  border: 2px solid rgba(196, 30, 58, 0.2);
+  border-radius: 50%;
+  padding: 8px 12px;
+  transform: rotate(-15deg);
+  pointer-events: none;
 }

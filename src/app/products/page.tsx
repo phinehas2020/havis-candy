@@ -54,7 +54,7 @@ export default async function ProductsPage() {
           {/* Local Pickup CTA */}
           <div className="retro-card-fancy flex flex-col items-start gap-5 p-8 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
-              <h2 className="font-display text-2xl text-balance">
+              <h2 className="section-heading text-2xl text-balance">
                 Looking for local pickup options?
               </h2>
               <p className="text-[var(--color-muted)] text-pretty">

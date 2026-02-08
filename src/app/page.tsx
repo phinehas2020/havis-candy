@@ -31,11 +31,11 @@ export default async function HomePage() {
 
       <main className="min-h-dvh">
         {/* ═══════════════════════════════════════════════════════════════════
-            HERO SECTION — Warm, inviting opening
+            HERO — "The Marquee"
             ═══════════════════════════════════════════════════════════════════ */}
         <section className="section-lg candy-counter-bg">
           <div className="container">
-            {/* Heritage Badge */}
+            {/* Starburst Badge */}
             <div className="flex justify-center mb-6">
               <div className="heritage-badge animate-in animate-float">
                 <span className="heritage-badge-label">Handmade</span>
@@ -45,7 +45,7 @@ export default async function HomePage() {
             </div>
 
             {/* Main Hero Content */}
-            <div className="text-center max-w-4xl mx-auto mb-12">
+            <div className="text-center max-w-4xl mx-auto mb-12 relative z-1">
               <h1 className="display-heading mb-8">
                 Uniquely flavored,<br />
                 <em>handmade</em> hard caramels.
@@ -66,8 +66,8 @@ export default async function HomePage() {
 
             {/* Featured Product Hero Card */}
             {heroProduct && (
-              <div className="max-w-5xl mx-auto">
-                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] shadow-xl overflow-hidden rounded-[var(--radius-xl)]">
+              <div className="max-w-5xl mx-auto relative z-1">
+                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] border-3 border-[var(--color-dark)] shadow-[var(--shadow-xl)] overflow-hidden rounded-[var(--radius-md)]" style={{ transform: "rotate(-1deg)" }}>
                   {/* Product Image */}
                   <div className="relative aspect-square md:aspect-auto">
                     <div className="absolute top-6 left-6 z-10">
@@ -105,14 +105,14 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Flourish Divider */}
+        {/* Scalloped Wave Divider */}
         <div className="flourish-divider" />
 
         {/* ═══════════════════════════════════════════════════════════════════
-            PRODUCT SHOWCASE — Warm candy counter grid
+            PRODUCT SHOWCASE — "The Penny Candy Counter"
             ═══════════════════════════════════════════════════════════════════ */}
-        <section className="section">
-          <div className="container">
+        <section className="section pattern-checkerboard">
+          <div className="container relative z-1">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
               <div>
                 <span className="overline mb-4 block">Best-Selling Flavors</span>
@@ -170,16 +170,16 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            OUR STORY — Editorial two-column narrative
+            OUR STORY — "The Chalkboard"
             ═══════════════════════════════════════════════════════════════════ */}
-        <section id="story" className="section-lg section-alt">
+        <section id="story" className="section-lg section-dark">
           <div className="container">
             <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
               {/* Story Content */}
               <div className="md:col-span-7 space-y-8">
                 <span className="overline">Our Story</span>
                 <h2 className="section-heading">{settings.storyHeading}</h2>
-                <p className="lead-text">{settings.storyBody}</p>
+                <p className="lead-text text-[var(--color-amber-light)]">{settings.storyBody}</p>
 
                 <div className="ornament-rule">
                   <div className="ornament-dots"><span></span></div>
@@ -192,16 +192,16 @@ export default async function HomePage() {
                 </p>
               </div>
 
-              {/* Heritage Card */}
+              {/* Heritage Card — Postcard style */}
               <div className="md:col-span-5">
-                <div className="card-framed">
+                <div className="card-framed bg-[var(--color-dark-surface)]! border-[var(--color-amber)]!">
                   <div className="text-center mb-8 relative z-10">
-                    <div className="heritage-stamp mx-auto">
-                      <span className="heritage-stamp-text">Est. 2019 · Waco, TX</span>
+                    <div className="heritage-stamp mx-auto border-[var(--color-amber)]!">
+                      <span className="heritage-stamp-text text-[var(--color-amber)]!">Est. 2019 &middot; Waco, TX</span>
                     </div>
                   </div>
-                  <h3 className="subheading text-center mb-4 relative z-10">Made with old-fashioned care</h3>
-                  <p className="body-text-sm text-center relative z-10">{settings.philosophyBody}</p>
+                  <h3 className="subheading text-center mb-4 relative z-10 text-[var(--color-cream)]!">Made with old-fashioned care</h3>
+                  <p className="body-text-sm text-center relative z-10 text-[var(--color-cream)]/80!">{settings.philosophyBody}</p>
                 </div>
               </div>
             </div>
@@ -209,11 +209,11 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            THE CRAFT — Feature cards with warm treatments
+            THE CRAFT — "The Recipe Cards"
             ═══════════════════════════════════════════════════════════════════ */}
-        <section id="craft" className="section-lg">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+        <section id="craft" className="section-lg pattern-dots">
+          <div className="container relative z-1">
+            <div className="max-w-2xl mb-16">
               <span className="overline mb-4 block">Made With Care</span>
               <h2 className="section-heading">
                 Hand-poured. Hand-wrapped.<br />Never rushed.
@@ -243,10 +243,10 @@ export default async function HomePage() {
               ].map((item, index) => (
                 <article
                   key={item.title}
-                  className={`card animate-in animate-delay-${index + 1}`}
+                  className={`craft-card animate-in animate-delay-${index + 1}`}
                 >
                   <span
-                    className="block font-display text-3xl font-semibold text-[var(--color-coral-light)] mb-5"
+                    className="block font-[family-name:var(--font-heading)] text-3xl text-[var(--color-coral-light)] mb-5"
                     aria-hidden="true"
                   >
                     {item.number}
@@ -260,13 +260,13 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            TESTIMONIAL — Warm quote block
+            TESTIMONIAL — "The Neon Sign"
             ═══════════════════════════════════════════════════════════════════ */}
         {spotlightTestimonial && (
           <section className="section-lg section-dark">
             <div className="container">
               <div className="testimonial">
-                <blockquote className="testimonial-quote">
+                <blockquote className="testimonial-quote neon-flicker">
                   {spotlightTestimonial.quote}
                 </blockquote>
                 <p className="testimonial-author">{spotlightTestimonial.author}</p>
@@ -276,11 +276,11 @@ export default async function HomePage() {
         )}
 
         {/* ═══════════════════════════════════════════════════════════════════
-            WHERE TO BUY — Location cards
+            WHERE TO BUY — "The Map Board" (Mint section)
             ═══════════════════════════════════════════════════════════════════ */}
-        <section id="where-to-buy" className="section-lg">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+        <section id="where-to-buy" className="section-lg section-mint pattern-awning">
+          <div className="container relative z-1 pt-4">
+            <div className="max-w-2xl mb-16">
               <span className="overline mb-4 block">Where To Buy</span>
               <h2 className="section-heading">Find us across the Waco area.</h2>
               <p className="body-text mt-4">
@@ -288,11 +288,11 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-3 pt-4">
               {locations.map((location, index) => (
                 <article
                   key={location.id}
-                  className={`card animate-in animate-delay-${index + 1}`}
+                  className={`location-card animate-in animate-delay-${index + 1}`}
                 >
                   <div className="flex flex-col h-full">
                     <h3 className="subheading mb-3">{location.name}</h3>
@@ -317,11 +317,11 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            CONTACT — Get in touch
+            CONTACT — "The Postcard"
             ═══════════════════════════════════════════════════════════════════ */}
-        <section className="section section-alt">
-          <div className="container container-narrow">
-            <div className="card-framed">
+        <section className="section pattern-lined">
+          <div className="container container-narrow relative z-1">
+            <div className="postcard">
               <div className="grid md:grid-cols-2 gap-10 relative z-10">
                 <div>
                   <span className="overline-simple block mb-4">Get In Touch</span>

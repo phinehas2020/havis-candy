@@ -9,15 +9,19 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-vanilla-cream)]/95 backdrop-blur-md border-b border-[var(--color-border)]">
+    <header className="sticky top-0 z-50 bg-[var(--color-vanilla-cream)] border-b-3 border-[var(--color-dark)] pattern-awning">
       <div className="container py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with Candy Jar */}
           <Link href="/" className="logo group">
-            <span className="logo-main group-hover:text-[var(--color-coral)] transition-colors">
+            <span className="candy-jar" aria-hidden="true">
+              <span className="candy-piece"></span>
+              <span className="candy-piece"></span>
+              <span className="candy-piece"></span>
+            </span>
+            <span className="logo-main">
               Havi&apos;s Candy Co.
             </span>
-            <span className="logo-tagline">Handmade in Waco, Texas</span>
           </Link>
 
           {/* Navigation */}
