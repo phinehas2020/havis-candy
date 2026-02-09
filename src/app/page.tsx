@@ -45,16 +45,16 @@ export default async function HomePage() {
             </div>
 
             {/* Main Hero Content */}
-            <div className="text-center max-w-4xl mx-auto mb-12 relative z-1">
-              <h1 className="display-heading mb-8">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 relative z-1">
+              <h1 className="display-heading mb-5 sm:mb-8">
                 Uniquely flavored,<br />
                 <em>handmade</em> hard caramels.
               </h1>
-              <p className="lead-text max-w-2xl mx-auto mb-10">
+              <p className="lead-text max-w-2xl mx-auto mb-6 sm:mb-10">
                 Small-batch sweets made from scratch with all-natural ingredients
                 and old-fashioned care. Born on a family farm in Central Texas.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
                 <Link href="/products" className="btn btn-primary">
                   Shop The Collection
                 </Link>
@@ -67,10 +67,10 @@ export default async function HomePage() {
             {/* Featured Product Hero Card */}
             {heroProduct && (
               <div className="max-w-5xl mx-auto relative z-1">
-                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] border-3 border-[var(--color-dark)] shadow-[var(--shadow-xl)] overflow-hidden rounded-[var(--radius-md)]" style={{ transform: "rotate(-1deg)" }}>
+                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] border-3 border-[var(--color-dark)] shadow-[var(--shadow-lg)] sm:shadow-[var(--shadow-xl)] overflow-hidden rounded-[var(--radius-md)] md:rotate-[-1deg]">
                   {/* Product Image */}
-                  <div className="relative aspect-square md:aspect-auto">
-                    <div className="absolute top-6 left-6 z-10">
+                  <div className="relative aspect-[4/3] sm:aspect-square md:aspect-auto">
+                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
                       <div className="ribbon-label">Signature</div>
                     </div>
                     <Image
@@ -84,12 +84,12 @@ export default async function HomePage() {
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-10 md:p-12 flex flex-col justify-center">
-                    <span className="overline-simple mb-4">Featured Flavor</span>
-                    <h2 className="section-heading mb-4">{heroProduct.title}</h2>
-                    <p className="body-text mb-8">{heroProduct.shortDescription}</p>
+                  <div className="p-6 sm:p-10 md:p-12 flex flex-col justify-center">
+                    <span className="overline-simple mb-3 sm:mb-4">Featured Flavor</span>
+                    <h2 className="section-heading mb-3 sm:mb-4">{heroProduct.title}</h2>
+                    <p className="body-text mb-6 sm:mb-8">{heroProduct.shortDescription}</p>
 
-                    <div className="flex items-end justify-between border-t-2 border-dashed border-[var(--color-border)] pt-6">
+                    <div className="flex items-end justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 sm:pt-6">
                       <div className="price">
                         <span className="price-currency">$</span>
                         <span className="price-amount">{heroProduct.price.toFixed(2)}</span>
@@ -113,7 +113,7 @@ export default async function HomePage() {
             ═══════════════════════════════════════════════════════════════════ */}
         <section className="section pattern-checkerboard">
           <div className="container relative z-1">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
               <div>
                 <span className="overline mb-4 block">Best-Selling Flavors</span>
                 <h2 className="section-heading">
@@ -174,9 +174,9 @@ export default async function HomePage() {
             ═══════════════════════════════════════════════════════════════════ */}
         <section id="story" className="section-lg section-dark">
           <div className="container">
-            <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
               {/* Story Content */}
-              <div className="md:col-span-7 space-y-8">
+              <div className="md:col-span-7 space-y-6 sm:space-y-8">
                 <span className="overline">Our Story</span>
                 <h2 className="section-heading">{settings.storyHeading}</h2>
                 <p className="lead-text">{settings.storyBody}</p>
@@ -213,14 +213,14 @@ export default async function HomePage() {
             ═══════════════════════════════════════════════════════════════════ */}
         <section id="craft" className="section-lg pattern-dots">
           <div className="container relative z-1">
-            <div className="max-w-2xl mb-16">
+            <div className="max-w-2xl mb-8 sm:mb-16">
               <span className="overline mb-4 block">Made With Care</span>
               <h2 className="section-heading">
-                Hand-poured. Hand-wrapped.<br />Never rushed.
+                Hand-poured. Hand-wrapped.<br className="hidden sm:block" /> Never rushed.
               </h2>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
               {[
                 {
                   title: "Handcrafted Quality",
@@ -280,7 +280,7 @@ export default async function HomePage() {
             ═══════════════════════════════════════════════════════════════════ */}
         <section id="where-to-buy" className="section-lg section-mint pattern-awning">
           <div className="container relative z-1 pt-4">
-            <div className="max-w-2xl mb-16">
+            <div className="max-w-2xl mb-8 sm:mb-16">
               <span className="overline mb-4 block">Where To Buy</span>
               <h2 className="section-heading">Find us across the Waco area.</h2>
               <p className="body-text mt-4">
@@ -288,7 +288,7 @@ export default async function HomePage() {
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3 pt-4">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-3 pt-4">
               {locations.map((location, index) => (
                 <article
                   key={location.id}

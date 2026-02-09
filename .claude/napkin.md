@@ -3,6 +3,7 @@
 ## Corrections
 | Date | Source | What Went Wrong | What To Do Instead |
 |------|--------|----------------|-------------------|
+| 2026-02-08 | self | `opencode upgrade` (brew/curl) kept saying 1.1.50 even though 1.1.53 was published, so the global CLI was stuck on the old models set. | Download the v1.1.53 macOS arm64 binary from GitHub, drop it in `/opt/homebrew/Cellar/opencode/1.1.53/bin`, and relink `/opt/homebrew/bin/opencode` so the shell picks up the new binary; remember future `brew upgrade` may roll this back until the formula reflects the release. |
 | 2026-02-08 | self | Used `bash -lc` first and shell init script expected zsh features, causing syntax errors. | Use `zsh -lc` in this environment for reliable command execution. |
 
 ## User Preferences
@@ -13,6 +14,9 @@
 
 ## Patterns That Work
 - Start by extracting content from the existing production site before creating IA/copy plans.
+- Card rotations (rotate(-1deg) etc.) and translateY offsets should be gated behind `@media (min-width: 768px)` — they waste space, clip, and look broken on single-column mobile layouts.
+- Use `clamp()` for display fonts with a tight mobile minimum (1.75rem for Monoton) since decorative typefaces lose legibility at large sizes on small screens.
+- Buttons on mobile: reduce padding and shadow size, stack vertically with `flex-col sm:flex-row` instead of wrapping.
 
 ## Patterns That Don't Work
 - Running shell commands with `bash -lc` in this environment can fail due to zsh-specific startup scripts.
