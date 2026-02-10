@@ -344,28 +344,28 @@ img {
    TYPOGRAPHY — Bold, characterful, candy energy
    ================================================================== */
 
-/* Display Headlines — Monoton neon marquee (HERO ONLY) */
+/* Display Headlines — Carter One bold retro (HERO ONLY) */
 .display-heading {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 400;
-  font-size: clamp(1.75rem, 5vw, var(--text-5xl));
-  line-height: 1.2;
-  letter-spacing: 0.03em;
+  font-size: clamp(2.25rem, 6vw, var(--text-5xl));
+  line-height: 1.1;
+  letter-spacing: 0.02em;
   color: var(--color-coral);
   text-transform: uppercase;
-  text-shadow: 3px 3px 0 var(--color-dark);
+  text-shadow: 4px 4px 0 var(--color-dark);
   text-wrap: balance;
 }
 
 .display-heading em {
   font-style: normal;
   color: var(--color-amber);
-  text-shadow: 3px 3px 0 var(--color-dark);
+  text-shadow: 4px 4px 0 var(--color-dark);
 }
 
 @media (max-width: 639px) {
   .display-heading {
-    text-shadow: 2px 2px 0 var(--color-dark);
+    text-shadow: 3px 3px 0 var(--color-dark);
   }
 }
 
