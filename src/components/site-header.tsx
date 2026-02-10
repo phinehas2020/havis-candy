@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CartButton } from "./cart-button";
 import { MobileNav } from "./mobile-nav";
 
 const navItems = [
@@ -39,6 +40,9 @@ export function SiteHeader() {
             <Link href="/products" className="btn btn-primary btn-sm hidden sm:inline-flex">
               Shop Caramels
             </Link>
+
+            {/* Cart */}
+            <CartButton />
 
             {/* Mobile Hamburger */}
             <MobileNav />

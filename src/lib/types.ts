@@ -10,6 +10,7 @@ export type Product = {
   featured?: boolean;
   badge?: string;
   stripePriceId?: string;
+  stripeProductId?: string;
 };
 
 export type StoreLocation = {

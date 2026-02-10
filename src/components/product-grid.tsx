@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 
-import { CheckoutButton } from "@/components/checkout-button";
+import { AddToCartButton } from "@/components/add-to-cart-button";
 import type { Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -111,12 +111,8 @@ export function ProductGrid({ products }: ProductGridProps) {
                 </span>
               </div>
 
-              {/* Checkout */}
-              <CheckoutButton
-                priceId={product.stripePriceId}
-                productTitle={product.title}
-                disabled={!product.inStock}
-              />
+              {/* Add to Cart */}
+              <AddToCartButton product={product} />
             </div>
           </article>
         ))}

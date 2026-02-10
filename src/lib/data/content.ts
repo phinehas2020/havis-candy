@@ -29,6 +29,7 @@ type SanityProduct = {
   featured?: boolean;
   badge?: string;
   stripePriceId?: string;
+  stripeProductId?: string;
   image?: unknown;
 };
 
@@ -66,6 +67,7 @@ function mapSanityProduct(item: SanityProduct): Product {
     featured: Boolean(item.featured),
     badge: item.badge,
     stripePriceId: item.stripePriceId,
+    stripeProductId: item.stripeProductId,
   };
 }
 

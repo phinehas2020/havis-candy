@@ -74,7 +74,16 @@ export const productType = defineType({
       title: "Stripe Price ID",
       type: "string",
       description:
-        "Price ID from Stripe, for example: price_123. Required for checkout.",
+        "Auto-managed by Sanity-to-Stripe sync. Do not edit manually.",
+      readOnly: true,
+    }),
+    defineField({
+      name: "stripeProductId",
+      title: "Stripe Product ID",
+      type: "string",
+      description:
+        "Auto-managed by Sanity-to-Stripe sync. Do not edit manually.",
+      readOnly: true,
     }),
   ],
   preview: {

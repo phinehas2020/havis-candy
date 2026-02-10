@@ -12,6 +12,7 @@ export const productsQuery = groq`
     featured,
     badge,
     stripePriceId,
+    stripeProductId,
     image
   }
 `;

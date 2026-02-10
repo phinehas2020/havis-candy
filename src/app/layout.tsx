@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Monoton, Carter_One, DM_Sans } from "next/font/google";
 
+import { CartDrawer } from "@/components/cart-drawer";
+import { CartProvider } from "@/lib/cart/cart-context";
 import { siteConfig, wacoKeywordTargets } from "@/lib/site";
 import "./globals.css";
 
@@ -63,7 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${monoton.variable} ${carterOne.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
+      </body>
     </html>
   );
 }

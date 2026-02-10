@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AddToCartButton } from "@/components/add-to-cart-button";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -154,7 +155,12 @@ export default async function HomePage() {
                         <span className="price-currency">$</span>
                         <span className="price-amount">{product.price.toFixed(2)}</span>
                       </div>
-                      <span className="status-available">In Stock</span>
+                      <span className={product.inStock ? "status-available" : "status-out-of-stock"}>
+                        {product.inStock ? "In Stock" : "Out of Stock"}
+                      </span>
+                    </div>
+                    <div className="mt-4">
+                      <AddToCartButton product={product} />
                     </div>
                   </div>
                 </article>
