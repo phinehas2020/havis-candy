@@ -1051,11 +1051,9 @@ img {
   box-shadow: var(--shadow-card-hover);
 }
 
-/* Wiggle on hover */
-@media (prefers-reduced-motion: no-preference) {
-  .product-card:hover {
-    animation: wiggle 0.4s var(--ease-out);
-  }
+/* Ensure hover doesn't reset opacity from fade-in-up entrance animation */
+.product-card:hover {
+  opacity: 1;
 }
 
 /* Homepage variant */

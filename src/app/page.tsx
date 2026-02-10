@@ -89,12 +89,12 @@ export default async function HomePage() {
                     <h2 className="section-heading mb-3 sm:mb-4">{heroProduct.title}</h2>
                     <p className="body-text mb-6 sm:mb-8">{heroProduct.shortDescription}</p>
 
-                    <div className="flex items-end justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 sm:pt-6">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 sm:pt-6">
                       <div className="price">
                         <span className="price-currency">$</span>
                         <span className="price-amount">{heroProduct.price.toFixed(2)}</span>
                       </div>
-                      <Link href="/products" className="btn btn-primary btn-sm">
+                      <Link href="/products" className="btn btn-primary btn-sm shrink-0">
                         View Details
                       </Link>
                     </div>
