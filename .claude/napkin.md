@@ -5,6 +5,7 @@
 |------|--------|----------------|-------------------|
 | 2026-02-08 | self | `opencode upgrade` (brew/curl) kept saying 1.1.50 even though 1.1.53 was published, so the global CLI was stuck on the old models set. | Download the v1.1.53 macOS arm64 binary from GitHub, drop it in `/opt/homebrew/Cellar/opencode/1.1.53/bin`, and relink `/opt/homebrew/bin/opencode` so the shell picks up the new binary; remember future `brew upgrade` may roll this back until the formula reflects the release. |
 | 2026-02-08 | self | Used `bash -lc` first and shell init script expected zsh features, causing syntax errors. | Use `zsh -lc` in this environment for reliable command execution. |
+| 2026-02-14 | self | Cart checkout failed after Stripe price updates because `ADD_ITEM` only incremented quantity for existing products and kept stale `stripePriceId` values from localStorage. | When re-adding an existing product, refresh cart metadata (`stripePriceId`, price, title, image) before checkout so stale IDs are replaced. |
 
 ## User Preferences
 - Wants work done fast and fully completed.
