@@ -13,7 +13,6 @@ export function CartDrawer() {
     closeCart,
     removeItem,
     updateQuantity,
-    clearCart,
   } = useCart();
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
@@ -27,6 +26,7 @@ export function CartDrawer() {
 
     try {
       const lineItems = items.map((item) => ({
+        productId: item.productId,
         priceId: item.stripePriceId,
         quantity: item.quantity,
       }));
@@ -43,14 +43,10 @@ export function CartDrawer() {
         invalidPriceIds?: string[];
       };
 
-      if (response.status === 422 && payload.invalidPriceIds) {
-        // Remove stale items from cart
-        for (const priceId of payload.invalidPriceIds) {
-          const staleItem = items.find((i) => i.stripePriceId === priceId);
-          if (staleItem) removeItem(staleItem.productId);
-        }
+      if (response.status === 422) {
         setError(
-          "Some items are no longer available and were removed from your cart.",
+          payload.error ??
+            "Some items are unavailable right now. Your cart was not changed.",
         );
         return;
       }
