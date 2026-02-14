@@ -56,6 +56,61 @@ type CartContextValue = {
 const STORAGE_KEY = "havis-candy-cart";
 const MAX_QUANTITY = 10;
 
+function sanitizeStoredItems(value: unknown): CartItem[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const dedupedItems = new Map<string, CartItem>();
+
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object") {
+      continue;
+    }
+
+    const item = entry as Partial<CartItem>;
+
+    if (
+      typeof item.productId !== "string" ||
+      item.productId.length === 0 ||
+      typeof item.stripePriceId !== "string" ||
+      item.stripePriceId.length === 0
+    ) {
+      continue;
+    }
+
+    const normalized: CartItem = {
+      productId: item.productId,
+      title: typeof item.title === "string" ? item.title : "Untitled caramel",
+      slug: typeof item.slug === "string" ? item.slug : item.productId,
+      price:
+        typeof item.price === "number" && Number.isFinite(item.price)
+          ? Math.max(0, item.price)
+          : 0,
+      stripePriceId: item.stripePriceId,
+      imageUrl: typeof item.imageUrl === "string" ? item.imageUrl : "",
+      quantity:
+        typeof item.quantity === "number" && Number.isFinite(item.quantity)
+          ? Math.min(Math.max(Math.round(item.quantity), 1), MAX_QUANTITY)
+          : 1,
+      inStock: Boolean(item.inStock),
+    };
+
+    const existing = dedupedItems.get(normalized.productId);
+    if (existing) {
+      dedupedItems.set(normalized.productId, {
+        ...normalized,
+        quantity: Math.min(existing.quantity + normalized.quantity, MAX_QUANTITY),
+      });
+      continue;
+    }
+
+    dedupedItems.set(normalized.productId, normalized);
+  }
+
+  return [...dedupedItems.values()];
+}
+
 // --- Reducer ---
 
 function cartReducer(state: CartState, action: CartAction): CartState {
@@ -69,7 +124,11 @@ function cartReducer(state: CartState, action: CartAction): CartState {
           ...state,
           items: state.items.map((i) =>
             i.productId === action.item.productId
-              ? { ...i, quantity: Math.min(i.quantity + 1, MAX_QUANTITY) }
+              ? {
+                  ...i,
+                  ...action.item,
+                  quantity: Math.min(i.quantity + 1, MAX_QUANTITY),
+                }
               : i,
           ),
         };
@@ -129,11 +188,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored) as CartItem[];
-        if (Array.isArray(parsed)) {
-          dispatch({ type: "HYDRATE", items: parsed });
-          return;
-        }
+        const parsed = JSON.parse(stored) as unknown;
+        dispatch({ type: "HYDRATE", items: sanitizeStoredItems(parsed) });
+        return;
       }
     } catch {
       // Corrupted data — start fresh
