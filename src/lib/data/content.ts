@@ -26,6 +26,7 @@ type SanityProduct = {
   longDescription?: string;
   price?: number;
   inStock?: boolean;
+  availableForPurchase?: boolean;
   featured?: boolean;
   badge?: string;
   stripePriceId?: string;
@@ -64,6 +65,7 @@ function mapSanityProduct(item: SanityProduct): Product {
       getSanityImageUrl(item.image) ??
       "https://static.wixstatic.com/media/fae32a_8c7f319c015b48cbaa15f2059aa3fbe7~mv2.jpg/v1/fill/w_720,h_960,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fae32a_8c7f319c015b48cbaa15f2059aa3fbe7~mv2.jpg",
     inStock: Boolean(item.inStock),
+    availableForPurchase: item.availableForPurchase !== false,
     featured: Boolean(item.featured),
     badge: item.badge,
     stripePriceId: item.stripePriceId,

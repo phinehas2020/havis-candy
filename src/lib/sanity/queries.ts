@@ -9,6 +9,7 @@ export const productsQuery = groq`
     longDescription,
     price,
     inStock,
+    availableForPurchase,
     featured,
     badge,
     stripePriceId,

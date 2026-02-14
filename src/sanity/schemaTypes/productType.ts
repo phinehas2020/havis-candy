@@ -47,6 +47,13 @@ export const productType = defineType({
       initialValue: true,
     }),
     defineField({
+      name: "availableForPurchase",
+      title: "Available to Buy",
+      type: "boolean",
+      description: "Toggle off to show 'Coming Soon' instead of Add to Cart.",
+      initialValue: true,
+    }),
+    defineField({
       name: "featured",
       title: "Feature on Homepage",
       type: "boolean",

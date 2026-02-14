@@ -7,6 +7,7 @@ export type Product = {
   longDescription: string;
   imageUrl: string;
   inStock: boolean;
+  availableForPurchase?: boolean;
   featured?: boolean;
   badge?: string;
   stripePriceId?: string;

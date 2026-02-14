@@ -11,7 +11,10 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   const { addItem, items } = useCart();
 
   const inCart = items.find((i) => i.productId === product.id);
-  const cannotAdd = !product.inStock || !product.stripePriceId;
+  const cannotAdd =
+    !product.availableForPurchase ||
+    !product.inStock ||
+    !product.stripePriceId;
 
   function handleAdd() {
     if (cannotAdd) return;
@@ -26,7 +29,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
     });
   }
 
-  if (!product.stripePriceId) {
+  if (!product.availableForPurchase || !product.stripePriceId) {
     return (
       <button type="button" className="retro-button w-full" disabled>
         Coming Soon

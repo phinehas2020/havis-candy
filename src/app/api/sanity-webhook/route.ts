@@ -21,7 +21,9 @@ type SanityWebhookBody = {
 function verifySecret(request: Request): boolean {
   const secret = process.env.SANITY_WEBHOOK_SECRET;
   if (!secret) return false;
-  return request.headers.get("sanity-webhook-secret") === secret;
+  const header =
+    request.headers.get("sanity-webhook-secret") ?? request.headers.get("sanity");
+  return header === secret;
 }
 
 export async function POST(request: Request) {

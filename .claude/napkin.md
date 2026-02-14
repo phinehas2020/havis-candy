@@ -50,3 +50,4 @@
 | 2026-02-08 | user | Requested explicit anti-AI-slop design quality and use of `.agents` skill guidance. | Prioritize distinctive visual system choices (typography, spacing, composition) before feature wiring.
 | 2026-02-08 | self | Used `@/` alias in `sanity.config.ts` and schema index initially; this can break `sanity` CLI resolution. | Use relative imports in Sanity config/schema entrypoints (`./src/...`, `./locationType`, etc.). |
 | 2026-02-08 | self | Starting dev server fails in this execution environment with `listen EPERM` on local ports (3000/4173). | Validate with build/lint here; ask user to run `pnpm dev` on their machine for interactive preview. |
+| 2026-02-14 | user | Products not showing in Sanity; wanted to add via Vercel CLI (no such command). | Use `pnpm run migrate:sanity` — script imports fallback products to Sanity, creates Stripe products, writes IDs back. |

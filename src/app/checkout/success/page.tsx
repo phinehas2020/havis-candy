@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ClearCartOnSuccess } from "@/components/clear-cart-on-success";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getStripeServerClient } from "@/lib/stripe/server";
@@ -36,8 +37,11 @@ export default async function CheckoutSuccessPage({
   const customerEmail =
     session?.customer_details?.email ?? session?.customer_email;
 
+  const orderComplete = !!session && session.payment_status === "paid";
+
   return (
     <>
+      <ClearCartOnSuccess orderComplete={orderComplete} />
       <SiteHeader />
       <main className="min-h-dvh">
         <section className="section-lg candy-counter-bg">

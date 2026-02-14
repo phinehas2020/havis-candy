@@ -25,43 +25,55 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-Use `.env.local`:
+Copy `.env.example` to `.env.local` and fill in values. See the example file for all keys. Required for full functionality:
+
+- Sanity: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_READ_TOKEN`, `SANITY_API_WRITE_TOKEN`
+- Stripe: `STRIPE_SECRET_KEY`
+- Webhook (for Sanity→Stripe sync): `SANITY_WEBHOOK_SECRET`
+
+If Sanity vars are missing, the site uses built-in fallback content. If `STRIPE_SECRET_KEY` or `stripePriceId` values are missing, Add to Cart shows "Coming Soon".
+
+## Sanity + Stripe Setup (Full Checkout)
+
+### 1. Create Sanity Project
+
+1. Go to [sanity.io/manage](https://sanity.io/manage) and create a project + dataset.
+2. In **API** → **Tokens**, create a token with **Editor** permissions.
+3. Set in `.env.local`:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID` (project ID from URL)
+   - `NEXT_PUBLIC_SANITY_DATASET` (e.g. `production`)
+   - `SANITY_API_READ_TOKEN`
+   - `SANITY_API_WRITE_TOKEN` (same token is fine for local dev)
+
+### 2. Import Products to Sanity + Stripe
+
+The migration script adds all fallback products (Sorghum, Chai, Coffee, Peppermint) to Sanity, uploads images, creates Stripe products/prices, and writes IDs back to Sanity. Run once:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://www.haviscandyco.com
-
-NEXT_PUBLIC_SANITY_PROJECT_ID=
-NEXT_PUBLIC_SANITY_DATASET=production
-NEXT_PUBLIC_SANITY_API_VERSION=2026-02-08
-SANITY_API_READ_TOKEN=
-
-STRIPE_SECRET_KEY=
+pnpm install
+pnpm run migrate:sanity
 ```
 
-### Notes
+Requires `STRIPE_SECRET_KEY` in `.env.local`. After migration, products appear in both Sanity Studio (`/studio`) and Stripe Dashboard.
 
-- If Sanity environment variables are missing, the site uses built-in fallback content from the current production site copy.
-- If `STRIPE_SECRET_KEY` or `stripePriceId` values are missing, checkout buttons show a safe fallback state.
+### 3. Sanity → Stripe Webhook (Optional, for Studio edits)
 
-## Sanity Setup
+When you edit products in Sanity Studio, a webhook keeps Stripe in sync. Configure it after deploying:
 
-1. Create a Sanity project and dataset.
-2. Set `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET`.
-3. Start app and open `/studio`.
-4. Add content using these document types:
-   - `siteSettings`
-   - `product`
-   - `location`
-   - `testimonial`
+1. Deploy to Vercel and set env vars (including `SANITY_WEBHOOK_SECRET`).
+2. In Sanity **Manage** → **API** → **Webhooks**, add:
+   - **URL**: `https://www.haviscandyco.com/api/sanity-webhook`
+   - **HTTP method**: POST
+   - **Trigger**: Create, Update, Delete on `product`
+   - **Secret**: same value as `SANITY_WEBHOOK_SECRET`
+3. Set `SANITY_WEBHOOK_SECRET` in Vercel env to match.
 
-Each `product` supports `stripePriceId` so Stripe Checkout can map directly from content.
+If the webhook is not configured, you can still edit products in Sanity; Stripe won’t auto-update until you configure it or re-run the migration for new products.
 
-## Stripe Setup
+### 4. Add / Edit Products
 
-1. Create products/prices in Stripe.
-2. Copy each Stripe Price ID (`price_...`) into the matching Sanity `product.stripePriceId`.
-3. Set `STRIPE_SECRET_KEY` in `.env.local` and deployment env.
-4. Checkout API route: `src/app/api/checkout/route.ts`
+- **In Sanity Studio** (`/studio`): Create or edit `product` documents. Set title, slug, price, image, in-stock, badge, featured.
+- **Stripe IDs**: Managed automatically by the webhook. For products created via the migration script, IDs are already set.
 
 ## SEO + Local SEO Foundations
 
@@ -81,6 +93,7 @@ pnpm lint
 pnpm build
 pnpm start
 pnpm sanity
+pnpm run migrate:sanity   # Import fallback products to Sanity + create Stripe products
 ```
 
 `pnpm build` is configured with webpack mode for stable builds in restricted environments.

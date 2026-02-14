@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "sanity": "sanity"
+    "sanity": "sanity",
+    "migrate:sanity": "tsx scripts/migrate-to-sanity.ts"
   },
   "dependencies": {
     "@sanity/image-url": "^2.0.3",
@@ -24,6 +25,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "dotenv": "^16.4.7",
+    "tsx": "^4.19.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

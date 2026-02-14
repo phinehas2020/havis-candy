@@ -60,7 +60,7 @@ export function CartDrawer() {
         return;
       }
 
-      clearCart();
+      // Redirect to Stripe; cart clears on success page after payment
       window.location.assign(payload.url);
     } catch {
       setError("A network error occurred. Please try again.");
