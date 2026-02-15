@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CartButton } from "./cart-button";
 import { MobileNav } from "./mobile-nav";
@@ -14,16 +15,17 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-[var(--color-vanilla-cream)] border-b-3 border-[var(--color-dark)] pattern-awning">
       <div className="container py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with Candy Jar */}
-          <Link href="/" className="logo group">
-            <span className="candy-jar" aria-hidden="true">
-              <span className="candy-piece"></span>
-              <span className="candy-piece"></span>
-              <span className="candy-piece"></span>
-            </span>
-            <span className="logo-main">
-              Havi&apos;s Candy Co.
-            </span>
+          {/* Brand Logo */}
+          <Link href="/" className="logo group" aria-label="Havi's Candy Co. home">
+            <Image
+              src="/logo-candy.png"
+              alt="Havi's Candy Co. logo"
+              width={628}
+              height={412}
+              sizes="(max-width: 640px) 130px, 190px"
+              priority
+              className="logo-image"
+            />
           </Link>
 
           {/* Desktop Navigation */}

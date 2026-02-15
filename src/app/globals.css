@@ -494,117 +494,33 @@ img {
 }
 
 /* ==================================================================
-   LOGO — Carter One with candy jar
+   LOGO — Candy mark image treatment
    ================================================================== */
 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
+  line-height: 0;
 }
 
-.logo-main {
-  font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
-  font-weight: 400;
-  color: var(--color-chocolate);
-  line-height: 1;
-  position: relative;
+.logo-image {
+  width: clamp(130px, 24vw, 190px);
+  height: auto;
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 
-.logo-main::after {
-  display: none;
-}
-
-.logo-tagline {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-toffee);
-  letter-spacing: 0.04em;
-  margin-top: var(--space-2);
+.logo:hover .logo-image {
+  transform: rotate(-2deg) scale(1.02);
 }
 
 .logo-stacked {
-  text-align: center;
+  text-align: left;
 }
 
-.logo-stacked .logo-main {
-  font-size: var(--text-3xl);
-}
-
-.logo-stacked .logo-main::after {
-  display: none;
-}
-
-.logo-stacked .logo-tagline {
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-}
-
-/* Candy Jar — Pure CSS */
-.candy-jar {
-  position: relative;
-  width: 28px;
-  height: 24px;
-  border: 2px solid var(--color-chocolate);
-  border-radius: 0 0 6px 6px;
-  background: transparent;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  overflow: hidden;
-}
-
-/* Jar lid */
-.candy-jar::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -2px;
-  right: -2px;
-  height: 6px;
-  background: var(--color-chocolate);
-  border-radius: 2px 2px 0 0;
-}
-
-/* Candy pieces inside */
-.candy-jar .candy-piece {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out);
-}
-
-.candy-jar .candy-piece:nth-child(1) {
-  background: var(--color-coral);
-}
-
-.candy-jar .candy-piece:nth-child(2) {
-  background: var(--color-amber);
-}
-
-.candy-jar .candy-piece:nth-child(3) {
-  background: var(--color-mint);
-}
-
-/* Candy spill on hover */
-.logo:hover .candy-jar .candy-piece {
-  animation: candySpill 0.6s var(--ease-out) forwards;
-}
-
-.logo:hover .candy-jar .candy-piece:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.logo:hover .candy-jar .candy-piece:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.logo:hover .candy-jar .candy-piece:nth-child(3) {
-  animation-delay: 0.2s;
+.footer-logo-image {
+  width: clamp(145px, 30vw, 190px);
+  height: auto;
 }
 
 /* ==================================================================

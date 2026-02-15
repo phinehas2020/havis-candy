@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const footerNav = [
@@ -36,8 +37,19 @@ export function SiteFooter() {
       <div className="footer-grid">
         {/* Brand Column */}
         <div>
-          <Link href="/" className="logo-stacked inline-block mb-6">
-            <span className="footer-brand">Havi&apos;s Candy Co.</span>
+          <Link
+            href="/"
+            className="logo-stacked inline-flex mb-6 rounded-[var(--radius-sm)] border-2 border-[var(--color-amber)] bg-[var(--color-vanilla-cream)] p-2"
+            aria-label="Havi's Candy Co. home"
+          >
+            <Image
+              src="/logo-candy.png"
+              alt="Havi's Candy Co. logo"
+              width={628}
+              height={412}
+              sizes="160px"
+              className="footer-logo-image"
+            />
           </Link>
           <p className="footer-description">
             Small-batch caramels, handmade with old-fashioned care on Dry Creek Road
