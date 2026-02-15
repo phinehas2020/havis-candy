@@ -31,6 +31,13 @@ export function MobileNav() {
           aria-label="Mobile navigation"
           className="mobile-nav-panel"
         >
+          <Link
+            href="/products"
+            className="btn btn-primary w-full mb-4"
+            onClick={() => setOpen(false)}
+          >
+            Shop Caramels
+          </Link>
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -41,13 +48,6 @@ export function MobileNav() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/products"
-            className="btn btn-primary w-full mt-2"
-            onClick={() => setOpen(false)}
-          >
-            Shop Caramels
-          </Link>
         </nav>
       )}
     </div>

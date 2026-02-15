@@ -504,6 +504,59 @@ img {
   text-decoration: none;
 }
 
+/* Header logo — more compact on mobile */
+.logo-header {
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .logo-header {
+    gap: var(--space-3);
+  }
+}
+
+.candy-jar-header {
+  width: 24px;
+  height: 20px;
+}
+
+.candy-jar-header::before {
+  top: -5px;
+  height: 5px;
+}
+
+.candy-jar-header .candy-piece {
+  width: 4px;
+  height: 4px;
+}
+
+@media (min-width: 640px) {
+  .candy-jar-header {
+    width: 28px;
+    height: 24px;
+  }
+
+  .candy-jar-header::before {
+    top: -6px;
+    height: 6px;
+  }
+
+  .candy-jar-header .candy-piece {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+.logo-header-text {
+  font-size: clamp(1.15rem, 4vw, 1.75rem);
+}
+
+@media (min-width: 640px) {
+  .logo-header-text {
+    font-size: clamp(1.4rem, 3vw, 1.75rem);
+  }
+}
+
 .logo-main {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 3vw, 1.75rem);

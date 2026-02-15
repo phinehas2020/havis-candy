@@ -13,21 +13,21 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-[var(--color-vanilla-cream)] border-b-3 border-[var(--color-dark)] pattern-awning">
       <div className="container py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo with Candy Jar */}
-          <Link href="/" className="logo group">
-            <span className="candy-jar" aria-hidden="true">
+        <div className="flex items-center justify-between gap-4 min-w-0">
+          {/* Logo with Candy Jar — shrinks on mobile to prevent overflow */}
+          <Link href="/" className="logo logo-header group flex-shrink min-w-0">
+            <span className="candy-jar candy-jar-header" aria-hidden="true">
               <span className="candy-piece"></span>
               <span className="candy-piece"></span>
               <span className="candy-piece"></span>
             </span>
-            <span className="logo-main">
+            <span className="logo-main logo-header-text">
               Havi&apos;s Candy Co.
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav aria-label="Primary" className="hidden lg:flex items-center gap-10">
+          <nav aria-label="Primary" className="hidden lg:flex items-center gap-10 flex-shrink-0">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="nav-link">
                 {item.label}
@@ -35,16 +35,14 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            {/* CTA Button — hidden on small mobile, visible from sm up */}
-            <Link href="/products" className="btn btn-primary btn-sm hidden sm:inline-flex">
+          {/* Cart, CTA, and mobile menu — never shrink */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* CTA — visible only on desktop (lg+) to avoid mobile cramping */}
+            <Link href="/products" className="btn btn-primary btn-sm hidden lg:inline-flex">
               Shop Caramels
             </Link>
 
-            {/* Cart */}
             <CartButton />
-
-            {/* Mobile Hamburger */}
             <MobileNav />
           </div>
         </div>
