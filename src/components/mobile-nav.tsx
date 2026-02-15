@@ -12,14 +12,16 @@ const navItems = [
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const menuId = "mobile-nav-panel";
 
   return (
-    <div className="lg:hidden">
+    <div className="site-mobile-nav lg:hidden">
       <button
         onClick={() => setOpen(!open)}
         className="mobile-nav-toggle"
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
+        aria-controls={menuId}
       >
         <span className={`hamburger-line ${open ? "hamburger-line-1-open" : ""}`} />
         <span className={`hamburger-line ${open ? "hamburger-line-2-open" : ""}`} />
@@ -28,6 +30,7 @@ export function MobileNav() {
 
       {open && (
         <nav
+          id={menuId}
           aria-label="Mobile navigation"
           className="mobile-nav-panel"
         >

@@ -34,10 +34,10 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════════════════
             HERO — "The Marquee"
             ═══════════════════════════════════════════════════════════════════ */}
-        <section className="section-lg candy-counter-bg">
+        <section className="section-lg candy-counter-bg hero-above-fold">
           <div className="container">
             {/* Starburst Badge */}
-            <div className="flex justify-center mb-6">
+            <div className="hero-badge flex justify-center">
               <div className="heritage-badge animate-in animate-float">
                 <span className="heritage-badge-label">Handmade</span>
                 <span className="heritage-badge-year">2019</span>
@@ -46,16 +46,17 @@ export default async function HomePage() {
             </div>
 
             {/* Main Hero Content */}
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 relative z-1">
-              <h1 className="display-heading mb-5 sm:mb-8">
-                Uniquely flavored,<br />
+            <div className="hero-copy text-center max-w-3xl mx-auto mb-8 sm:mb-10 relative z-1">
+              <h1 className="display-heading hero-title mb-5 sm:mb-6">
+                <span>Uniquely flavored,</span>
+                <br className="hidden sm:block" />
                 <em>handmade</em> hard caramels.
               </h1>
-              <p className="lead-text max-w-2xl mx-auto mb-6 sm:mb-10">
+              <p className="lead-text hero-lead max-w-2xl mx-auto mb-6 sm:mb-9">
                 Small-batch sweets made from scratch with all-natural ingredients
                 and old-fashioned care. Born on a family farm in Central Texas.
               </p>
-              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="hero-cta-group flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4">
                 <Link href="/products" className="btn btn-primary">
                   Shop The Collection
                 </Link>
@@ -67,11 +68,11 @@ export default async function HomePage() {
 
             {/* Featured Product Hero Card */}
             {heroProduct && (
-              <div className="max-w-5xl mx-auto relative z-1">
-                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] border-3 border-[var(--color-dark)] shadow-[var(--shadow-lg)] sm:shadow-[var(--shadow-xl)] overflow-hidden rounded-[var(--radius-md)] md:rotate-[-1deg]">
+              <div className="max-w-5xl mx-auto relative z-1 hero-featured">
+                <div className="grid md:grid-cols-2 gap-0 bg-[var(--color-butter)] border-3 border-[var(--color-dark)] shadow-[var(--shadow-lg)] sm:shadow-[var(--shadow-xl)] overflow-hidden rounded-[var(--radius-md)] hero-featured-grid md:rotate-[-1deg]">
                   {/* Product Image */}
-                  <div className="relative aspect-[4/3] sm:aspect-square md:aspect-auto">
-                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
+                  <div className="relative hero-featured-media aspect-[4/3] sm:aspect-square md:aspect-auto">
+                    <div className="hero-featured-ribbon absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
                       <div className="ribbon-label">Signature</div>
                     </div>
                     <Image
@@ -85,12 +86,12 @@ export default async function HomePage() {
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-6 sm:p-10 md:p-12 flex flex-col justify-center">
+                  <div className="hero-featured-content p-6 sm:p-10 md:p-12 flex flex-col justify-center">
                     <span className="overline-simple mb-3 sm:mb-4">Featured Flavor</span>
                     <h2 className="section-heading mb-3 sm:mb-4">{heroProduct.title}</h2>
                     <p className="body-text mb-6 sm:mb-8">{heroProduct.shortDescription}</p>
 
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 sm:pt-6">
+                    <div className="hero-featured-pricing flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-t-2 border-dashed border-[var(--color-border)] pt-4 sm:pt-6">
                       <div className="price">
                         <span className="price-currency">$</span>
                         <span className="price-amount">{heroProduct.price.toFixed(2)}</span>
