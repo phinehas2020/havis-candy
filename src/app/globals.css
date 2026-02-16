@@ -283,7 +283,7 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
+  height: 4px;
   background: repeating-linear-gradient(
     90deg,
     var(--color-coral) 0px,
@@ -1198,54 +1198,44 @@ img {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--color-vanilla-cream);
-  border-bottom: 3px solid var(--color-dark);
+  background: rgba(253, 246, 236, 0.97);
+  border-bottom: 2px solid var(--color-dark);
+  backdrop-filter: blur(6px);
 }
 
 .site-header-inner {
+  padding-top: clamp(0.5rem, 1.6vw, 0.85rem);
+  padding-bottom: clamp(0.5rem, 1.6vw, 0.85rem);
+}
+
+.site-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  min-height: 62px;
-  padding-top: var(--space-2);
-  padding-bottom: var(--space-2);
+  min-height: 56px;
 }
 
-.site-header-logo {
-  display: inline-flex;
-  align-items: center;
+.site-header-brand {
   min-width: 0;
-  gap: var(--space-3);
+  flex-shrink: 1;
 }
 
-.site-header-logo .logo-main {
-  white-space: nowrap;
-  font-size: clamp(1.1rem, 4.8vw, 1.6rem);
-}
-
-.site-header-logo .candy-jar {
-  width: 24px;
-  height: 21px;
-  flex: 0 0 auto;
+.site-header-logo-image {
+  width: clamp(108px, 18vw, 156px);
 }
 
 .site-header-nav {
   display: none;
   align-items: center;
-  gap: var(--space-8);
+  gap: clamp(1.25rem, 1.8vw, 2rem);
 }
 
 .site-header-actions {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-}
-
-.site-header-cta {
-  min-height: 40px;
-  padding: var(--space-2) var(--space-4);
-  box-shadow: var(--shadow-xs);
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {
@@ -1253,10 +1243,8 @@ img {
     display: flex;
   }
 
-  .site-header-inner {
-    min-height: 68px;
-    padding-top: var(--space-3);
-    padding-bottom: var(--space-3);
+  .site-header-row {
+    min-height: 62px;
   }
 }
 
@@ -1267,26 +1255,17 @@ img {
 }
 
 @media (max-width: 639px) {
-  .site-header-inner {
-    min-height: 58px;
+  .site-header-row {
+    min-height: 50px;
     gap: var(--space-2);
   }
 
-  .site-header-logo .logo-main {
-    font-size: 1.1rem;
-  }
-
-  .site-header-logo .candy-jar {
-    width: 21px;
-    height: 18px;
-  }
-
-  .site-header-cta {
-    min-height: 38px;
+  .site-header-logo-image {
+    width: clamp(96px, 30vw, 118px);
   }
 
   .site-header-actions {
-    gap: var(--space-2);
+    gap: var(--space-1);
   }
 }
 
@@ -1297,23 +1276,23 @@ img {
 .nav-link {
   position: relative;
   font-family: var(--font-ui);
-  font-size: var(--text-sm);
+  font-size: 0.77rem;
   font-weight: 700;
   color: var(--color-dark);
   text-decoration: none;
-  padding: var(--space-2) 0;
+  padding: 0.45rem 0;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   transition: color var(--duration-fast) var(--ease-out);
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   width: 0;
-  height: 4px;
+  height: 3px;
   background: var(--color-coral);
   transition: width var(--duration-normal) var(--ease-out);
   border-radius: 0;
@@ -1996,10 +1975,10 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
   background: transparent;
   border: 2px solid var(--color-dark);
   border-radius: var(--radius-sm);
@@ -2014,7 +1993,7 @@ img {
 .hamburger-line {
   display: block;
   width: 100%;
-  height: 3px;
+  height: 2.5px;
   background: var(--color-dark);
   border-radius: 1px;
   transition: all var(--duration-normal) var(--ease-out);
@@ -2022,7 +2001,7 @@ img {
 }
 
 .hamburger-line-1-open {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .hamburger-line-2-open {
@@ -2031,7 +2010,7 @@ img {
 }
 
 .hamburger-line-3-open {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 .mobile-nav-panel {
@@ -2097,8 +2076,8 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: 2px solid var(--color-dark);
   border-radius: var(--radius-sm);
@@ -2495,9 +2474,9 @@ img {
   }
 
   .site-mobile-nav .mobile-nav-toggle {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+    width: 38px;
+    height: 38px;
+    padding: 7px;
   }
 
   .mobile-nav-panel {

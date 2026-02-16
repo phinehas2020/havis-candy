@@ -8,18 +8,21 @@
 | 2026-02-08 | self | Used `bash -lc` first and shell init script expected zsh features, causing syntax errors. | Use `zsh -lc` in this environment for reliable command execution. |
 | 2026-02-14 | self | Cart checkout failed after Stripe price updates because `ADD_ITEM` only incremented quantity for existing products and kept stale `stripePriceId` values from localStorage. | When re-adding an existing product, refresh cart metadata (`stripePriceId`, price, title, image) before checkout so stale IDs are replaced. |
 | 2026-02-14 | self | Production `/api/checkout` returned 422 for every Sanity `stripePriceId` on `/products`, indicating checkout cannot trust stored Stripe price IDs alone. | Resolve stale price IDs server-side using canonical product ID, attempt Stripe product/price recovery, and fall back to inline `price_data` so checkout can still start. |
+| 2026-02-16 | self | Assumed `hidden lg:inline-flex` would hide the header CTA, but `.btn { display: inline-flex; }` in `globals.css` can override utility visibility and keep it visible on mobile. | For show/hide behavior, prefer component-specific classes/media rules (or `!hidden`/`!inline-flex`) when custom classes also define `display`. |
 
 ## User Preferences
 - Wants work done fast and fully completed.
 - Wants a teaching-style explanation after technical implementation.
 - Wants high-emphasis visual design with tasteful whitespace.
 - Prefers classy, old-fashioned American retro aesthetics.
+- Wants a cleaner, less crowded header and a smaller candy logo.
 
 ## Patterns That Work
 - Start by extracting content from the existing production site before creating IA/copy plans.
 - Card rotations (rotate(-1deg) etc.) and translateY offsets should be gated behind `@media (min-width: 768px)` — they waste space, clip, and look broken on single-column mobile layouts.
 - Use `clamp()` for display fonts with a tight mobile minimum (1.75rem for Monoton) since decorative typefaces lose legibility at large sizes on small screens.
 - Buttons on mobile: reduce padding and shadow size, stack vertically with `flex-col sm:flex-row` instead of wrapping.
+- In this repo's mobile header, removing the large CTA and reducing icon controls to ~38-40px improves balance without losing usability.
 
 ## Patterns That Don't Work
 - Running shell commands with `bash -lc` in this environment can fail due to zsh-specific startup scripts.

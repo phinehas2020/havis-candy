@@ -12,13 +12,12 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-[var(--color-vanilla-cream)] border-b-3 border-[var(--color-dark)] pattern-awning">
-      <div className="container py-3 sm:py-4">
-        <div className="flex items-center justify-between gap-4 min-w-0">
-          {/* Brand Logo */}
+    <header className="site-header pattern-awning">
+      <div className="container site-header-inner">
+        <div className="site-header-row">
           <Link
             href="/"
-            className="logo group flex-shrink min-w-0"
+            className="logo site-header-brand"
             aria-label="Havi's Candy Co. home"
           >
             <Image
@@ -26,14 +25,13 @@ export function SiteHeader() {
               alt="Havi's Candy Co. logo"
               width={628}
               height={412}
-              sizes="(max-width: 640px) 130px, 190px"
+              sizes="(max-width: 640px) 108px, (max-width: 1024px) 132px, 156px"
               priority
-              className="logo-image"
+              className="logo-image site-header-logo-image"
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav aria-label="Primary" className="hidden lg:flex items-center gap-10 flex-shrink-0">
+          <nav aria-label="Primary" className="site-header-nav">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="nav-link">
                 {item.label}
@@ -41,13 +39,7 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          {/* Cart, CTA, and mobile menu — never shrink */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            {/* CTA — visible only on desktop (lg+) to avoid mobile cramping */}
-            <Link href="/products" className="btn btn-primary btn-sm hidden lg:inline-flex">
-              Shop Caramels
-            </Link>
-
+          <div className="site-header-actions">
             <CartButton />
             <MobileNav />
           </div>
