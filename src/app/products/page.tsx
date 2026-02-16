@@ -9,6 +9,8 @@ import { SiteHeader } from "@/components/site-header";
 import { getProducts } from "@/lib/data/content";
 import { buildProductsSchema } from "@/lib/seo/schemas";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Products",
   description:

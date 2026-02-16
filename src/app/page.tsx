@@ -8,6 +8,8 @@ import { SiteHeader } from "@/components/site-header";
 import { getLocations, getProducts, getSiteSettings, getTestimonials } from "@/lib/data/content";
 import { buildFaqSchema, buildLocalBusinessSchema, buildProductsSchema } from "@/lib/seo/schemas";
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const [settings, products, locations, testimonials] = await Promise.all([
     getSiteSettings(),

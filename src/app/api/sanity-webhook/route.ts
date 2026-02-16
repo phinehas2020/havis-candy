@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { sanityWriteClient } from "@/lib/sanity/write-client";
 import { getSanityImageUrl } from "@/lib/sanity/image";
@@ -17,6 +18,11 @@ type SanityWebhookBody = {
   stripeProductId?: string;
   stripePriceId?: string;
 };
+
+function revalidateStorefrontPaths() {
+  revalidatePath("/");
+  revalidatePath("/products");
+}
 
 function verifySecret(request: Request): boolean {
   const secret = process.env.SANITY_WEBHOOK_SECRET;
@@ -68,6 +74,7 @@ export async function POST(request: Request) {
       if (body.stripePriceId) {
         await stripe.prices.update(body.stripePriceId, { active: false });
       }
+      revalidateStorefrontPaths();
       return NextResponse.json({ action: "archived" });
     }
 
@@ -104,6 +111,7 @@ export async function POST(request: Request) {
             .set({ stripePriceId: newPrice.id })
             .commit();
 
+          revalidateStorefrontPaths();
           return NextResponse.json({
             action: "updated",
             priceChanged: true,
@@ -112,6 +120,7 @@ export async function POST(request: Request) {
         }
       }
 
+      revalidateStorefrontPaths();
       return NextResponse.json({ action: "updated" });
     }
 
@@ -139,6 +148,7 @@ export async function POST(request: Request) {
       })
       .commit();
 
+    revalidateStorefrontPaths();
     return NextResponse.json({
       action: "created",
       stripeProductId: stripeProduct.id,
