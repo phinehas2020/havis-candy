@@ -17,7 +17,7 @@ export type CartItem = {
   title: string;
   slug: string;
   price: number;
-  stripePriceId: string;
+  stripePriceId?: string;
   imageUrl: string;
   quantity: number;
   inStock: boolean;
@@ -72,9 +72,7 @@ function sanitizeStoredItems(value: unknown): CartItem[] {
 
     if (
       typeof item.productId !== "string" ||
-      item.productId.length === 0 ||
-      typeof item.stripePriceId !== "string" ||
-      item.stripePriceId.length === 0
+      item.productId.length === 0
     ) {
       continue;
     }
@@ -87,7 +85,10 @@ function sanitizeStoredItems(value: unknown): CartItem[] {
         typeof item.price === "number" && Number.isFinite(item.price)
           ? Math.max(0, item.price)
           : 0,
-      stripePriceId: item.stripePriceId,
+      stripePriceId:
+        typeof item.stripePriceId === "string" && item.stripePriceId.length > 0
+          ? item.stripePriceId
+          : undefined,
       imageUrl: typeof item.imageUrl === "string" ? item.imageUrl : "",
       quantity:
         typeof item.quantity === "number" && Number.isFinite(item.quantity)

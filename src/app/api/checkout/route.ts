@@ -9,8 +9,10 @@ export const runtime = "nodejs";
 
 const lineItemSchema = z.object({
   productId: z.string().min(1).optional(),
-  priceId: z.string().min(1),
+  priceId: z.string().min(1).optional(),
   quantity: z.number().int().positive().max(10),
+}).refine((item) => Boolean(item.priceId || item.productId), {
+  message: "Each line item must include a productId or priceId.",
 });
 
 const checkoutSchema = z.object({
@@ -139,13 +141,15 @@ async function resolveLineItems(
   const unresolvedPriceIds: string[] = [];
 
   for (const item of payload.lineItems) {
-    const activePrice = await retrieveActivePrice(stripe, item.priceId);
-    if (activePrice) {
-      resolvedLineItems.push({
-        price: activePrice.id,
-        quantity: item.quantity,
-      });
-      continue;
+    if (item.priceId) {
+      const activePrice = await retrieveActivePrice(stripe, item.priceId);
+      if (activePrice) {
+        resolvedLineItems.push({
+          price: activePrice.id,
+          quantity: item.quantity,
+        });
+        continue;
+      }
     }
 
     const canonicalProduct = item.productId
@@ -175,7 +179,9 @@ async function resolveLineItems(
       continue;
     }
 
-    unresolvedPriceIds.push(item.priceId);
+    unresolvedPriceIds.push(
+      item.priceId ?? `missing-price-id:${item.productId ?? "unknown-product"}`,
+    );
   }
 
   return {
