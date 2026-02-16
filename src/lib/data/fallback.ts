@@ -13,6 +13,7 @@ export const fallbackProducts: Product[] = [
     imageUrl:
       "https://static.wixstatic.com/media/fae32a_8c7f319c015b48cbaa15f2059aa3fbe7~mv2.jpg/v1/fill/w_720,h_960,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fae32a_8c7f319c015b48cbaa15f2059aa3fbe7~mv2.jpg",
     inStock: true,
+    availableForPurchase: true,
     featured: true,
     badge: "Signature",
   },
@@ -28,6 +29,7 @@ export const fallbackProducts: Product[] = [
     imageUrl:
       "https://static.wixstatic.com/media/fae32a_a617cf9dced04eb7b233fc04b5686be0~mv2.jpg/v1/fill/w_720,h_960,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fae32a_a617cf9dced04eb7b233fc04b5686be0~mv2.jpg",
     inStock: true,
+    availableForPurchase: true,
     featured: true,
   },
   {
@@ -42,6 +44,7 @@ export const fallbackProducts: Product[] = [
     imageUrl:
       "https://static.wixstatic.com/media/fae32a_119becc1800e469b9e90d8c2f5c03dbd~mv2.jpg/v1/fill/w_720,h_960,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fae32a_119becc1800e469b9e90d8c2f5c03dbd~mv2.jpg",
     inStock: true,
+    availableForPurchase: true,
     featured: true,
   },
   {
@@ -56,6 +59,7 @@ export const fallbackProducts: Product[] = [
     imageUrl:
       "https://static.wixstatic.com/media/fae32a_beb0933ab6734b38b53c760e99c5316b~mv2.jpg/v1/fill/w_720,h_960,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/fae32a_beb0933ab6734b38b53c760e99c5316b~mv2.jpg",
     inStock: false,
+    availableForPurchase: true,
     badge: "Seasonal",
   },
 ];

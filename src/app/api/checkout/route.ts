@@ -158,7 +158,7 @@ async function resolveLineItems(
 
     if (
       canonicalProduct &&
-      canonicalProduct.availableForPurchase &&
+      canonicalProduct.availableForPurchase !== false &&
       canonicalProduct.inStock
     ) {
       const recoveredPriceId = await findActivePriceForProduct(

@@ -11,7 +11,8 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   const { addItem, items } = useCart();
 
   const inCart = items.find((i) => i.productId === product.id);
-  const cannotAdd = !product.availableForPurchase || !product.inStock;
+  const isAvailableForPurchase = product.availableForPurchase !== false;
+  const cannotAdd = !isAvailableForPurchase || !product.inStock;
 
   function handleAdd() {
     if (cannotAdd) return;
@@ -26,7 +27,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
     });
   }
 
-  if (!product.availableForPurchase) {
+  if (!isAvailableForPurchase) {
     return (
       <button type="button" className="retro-button w-full" disabled>
         Coming Soon
