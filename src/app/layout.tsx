@@ -56,6 +56,11 @@ export const metadata: Metadata = {
     title: "Havi's Candy Co. | Handmade Hard Caramels in Waco, Texas",
     description: siteConfig.description,
   },
+  icons: {
+    icon: "/logo-candy.png",
+    shortcut: "/logo-candy.png",
+    apple: "/logo-candy.png",
+  },
 };
 
 export default function RootLayout({

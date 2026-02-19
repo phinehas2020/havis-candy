@@ -1222,7 +1222,7 @@ img {
 }
 
 .site-header-logo-image {
-  width: clamp(108px, 18vw, 156px);
+  width: clamp(76px, 13vw, 110px);
 }
 
 .site-header-nav {
@@ -1261,7 +1261,7 @@ img {
   }
 
   .site-header-logo-image {
-    width: clamp(96px, 30vw, 118px);
+    width: clamp(67px, 21vw, 83px);
   }
 
   .site-header-actions {
