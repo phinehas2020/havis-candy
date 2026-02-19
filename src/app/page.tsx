@@ -52,6 +52,7 @@ export default async function HomePage() {
               <h1 className="display-heading hero-title mb-5 sm:mb-6">
                 <span>Uniquely flavored,</span>
                 <br className="hidden sm:block" />
+                {" "}
                 <em>handmade</em> hard caramels.
               </h1>
               <p className="lead-text hero-lead max-w-2xl mx-auto mb-6 sm:mb-9">

@@ -3,6 +3,8 @@
 ## Corrections
 | Date | Source | What Went Wrong | What To Do Instead |
 |------|--------|----------------|-------------------|
+| 2026-02-19 | self | Started with repo discovery commands before reading `.claude/napkin.md` for this session. | Open and apply `.claude/napkin.md` first in every session before any shell exploration. |
+| 2026-02-16 | self | Embedded Studio kept throwing `access control checks` against `system.release`/`sanity.canvas.link` even with CORS fixed, because Sanity enables Releases/Scheduled Drafts/Canvas integrations by default in workspace config. | In `sanity.config.ts`, explicitly disable `releases`, `scheduledDrafts`, and `apps.canvas` when those features are not used to prevent unauthorized listen/query calls. |
 | 2026-02-16 | self | Sanity Studio in-browser `data/listen` and `system.release` requests failed with `access control checks`/401 even though origins existed in CORS. | Ensure Studio origins are configured with credential support; if an origin already exists, rotate it with `sanity cors delete <origin>` then `sanity cors add <origin> --credentials` to force cookie/token auth. |
 | 2026-02-16 | self | UI treated optional `availableForPurchase` as false (`!product.availableForPurchase`), so missing booleans in fallback/incomplete data rendered every button as “Coming Soon.” | Gate availability with `product.availableForPurchase !== false` and ensure fallback products set `availableForPurchase: true` explicitly. |
 | 2026-02-16 | self | Used `pnpm exec tsx -e` with top-level `await`, which defaults to CJS and failed with `Top-level await is currently not supported`. | Wrap quick `tsx -e` diagnostics in an async IIFE (`void (async () => { ... })()`) or run as ESM file. |
@@ -33,6 +35,8 @@
 - Buttons on mobile: reduce padding and shadow size, stack vertically with `flex-col sm:flex-row` instead of wrapping.
 - In this repo's mobile header, removing the large CTA and reducing icon controls to ~38-40px improves balance without losing usability.
 - For Sanity content edits to appear reliably, combine page-level ISR (`export const revalidate`) with Sanity webhook `revalidatePath("/")` + `revalidatePath("/products")`.
+- In JSX hero headings, do not rely on whitespace around a hidden `<br>` for mobile wraps; add an explicit `{" "}` break opportunity and keep a mobile `overflow-wrap` guard to prevent clipped words.
+- For mobile nav dropdowns triggered from small icon containers, avoid `left: 0; right: 0` absolute panels; use a viewport-anchored fixed panel (plus backdrop) so menu width stays usable.
 
 ## Patterns That Don't Work
 - Running shell commands with `bash -lc` in this environment can fail due to zsh-specific startup scripts.
@@ -67,3 +71,11 @@
 | 2026-02-08 | self | Used `@/` alias in `sanity.config.ts` and schema index initially; this can break `sanity` CLI resolution. | Use relative imports in Sanity config/schema entrypoints (`./src/...`, `./locationType`, etc.). |
 | 2026-02-08 | self | Starting dev server fails in this execution environment with `listen EPERM` on local ports (3000/4173). | Validate with build/lint here; ask user to run `pnpm dev` on their machine for interactive preview. |
 | 2026-02-14 | user | Products not showing in Sanity; wanted to add via Vercel CLI (no such command). | Use `pnpm run migrate:sanity` — script imports fallback products to Sanity, creates Stripe products, writes IDs back. |
+
+## 2026-02-19 Session Note
+- Reduced header logo width classes in `src/app/globals.css` and `src/components/site-header.tsx` to about 700f previous size.
+- Updated Next metadata in `src/app/layout.tsx` so `/logo-candy.png` is used for icon, shortcut, and Apple icon.
+
+## 2026-02-19 Session Note
+- Reduced header logo again: desktop clamp now 72-103px and mobile clamp 64-78px.
+- Updated `sizes` prop in `src/components/site-header.tsx` to match the smaller header logo rendering (72/86/103).

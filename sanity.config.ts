@@ -15,6 +15,17 @@ export default defineConfig({
   projectId,
   dataset,
   basePath: "/studio",
+  releases: {
+    enabled: false,
+  },
+  scheduledDrafts: {
+    enabled: false,
+  },
+  apps: {
+    canvas: {
+      enabled: false,
+    },
+  },
   plugins: [structureTool(), visionTool()],
   schema: {
     types: schemaTypes,

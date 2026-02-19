@@ -2018,19 +2018,37 @@ img {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+.site-mobile-nav {
+  position: relative;
+}
+
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: rgba(26, 10, 0, 0.18);
+  z-index: 58;
+}
+
 .mobile-nav-panel {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 58px);
+  right: max(var(--space-3), env(safe-area-inset-right));
+  left: max(var(--space-3), env(safe-area-inset-left));
+  width: auto;
   background: var(--color-vanilla-cream);
-  border-bottom: 3px solid var(--color-dark);
+  border: 3px solid var(--color-dark);
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   box-shadow: 0 8px 24px rgba(26, 10, 0, 0.12);
-  z-index: 50;
+  max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: 60;
   animation: mobileNavSlide 0.25s var(--ease-out) forwards;
 }
 
@@ -2066,7 +2084,8 @@ img {
 /* Hide mobile nav on desktop */
 @media (min-width: 1024px) {
   .mobile-nav-toggle,
-  .mobile-nav-panel {
+  .mobile-nav-panel,
+  .mobile-nav-backdrop {
     display: none;
   }
 }
@@ -2423,11 +2442,13 @@ img {
 
   .hero-copy {
     margin-bottom: var(--space-5);
-    padding-inline: var(--space-1);
+    padding-inline: var(--space-2);
   }
 
   .hero-title {
     text-shadow: 2px 2px 0 var(--color-dark);
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 
   .hero-lead {
@@ -2471,7 +2492,7 @@ img {
   }
 
   .site-mobile-nav {
-    position: relative;
+    z-index: 61;
   }
 
   .site-header-actions {
@@ -2485,16 +2506,12 @@ img {
   }
 
   .mobile-nav-panel {
-    position: absolute;
-    top: calc(100% + var(--space-1));
-    left: 0;
-    right: 0;
-    max-height: calc(100dvh - 70px);
-    overflow: auto;
+    top: calc(env(safe-area-inset-top, 0px) + 54px);
+    right: max(var(--space-2), env(safe-area-inset-right));
+    left: max(var(--space-2), env(safe-area-inset-left));
+    max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 64px);
     padding: var(--space-3);
     gap: var(--space-1);
-    border: 3px solid var(--color-dark);
-    border-top: 0;
   }
 
   .mobile-nav-link {
