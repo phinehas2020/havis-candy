@@ -25,7 +25,7 @@ export function SiteHeader() {
               alt="Havi's Candy Co. logo"
               width={628}
               height={412}
-              sizes="(max-width: 640px) 72px, (max-width: 1024px) 86px, 103px"
+              sizes="(max-width: 640px) 70px, (max-width: 1024px) 84px, 100px"
               priority
               className="logo-image site-header-logo-image"
             />
