@@ -66,14 +66,14 @@ export const fallbackProducts: Product[] = [
 
 export const fallbackLocations: StoreLocation[] = [
   {
-    id: "homestead-weekly-market",
-    name: "Homestead Weekly Market",
-    streetAddress: "167 Halbert Ln",
+    id: "heritage-fine-crafts",
+    name: "Heritage Fine Crafts",
+    streetAddress: "608 Dry Creek Rd",
     city: "Waco",
     region: "TX",
     postalCode: "76705",
     mapUrl:
-      "https://maps.apple.com/?address=167%20Halbert%20Ln,%20Waco,%20TX%20%2076705,%20United%20States&auid=10207572279643702141&ll=31.669584,-97.144901&lsp=9902&q=Homestead%20General%20Store&t=h",
+      "https://maps.apple.com/?address=608%20Dry%20Creek%20Rd,%20Waco,%20TX%2076705,%20United%20States&q=Heritage%20Fine%20Crafts&t=h",
   },
   {
     id: "brazos-valley-cheese",
@@ -115,6 +115,7 @@ export const fallbackSiteSettings: SiteSettings = {
   storyHeading: "About Havi & Her Journey",
   storyBody:
     "Ahavah “Havi” discovered her love for making sweet treats at just five years old. What began as a childhood hobby grew into a business rooted in craft, tradition, and hospitality.",
+  storyImageUrl: "",
   philosophyBody:
     "Every batch is hand-poured and hand-wrapped. Sorghum from the family farm in Central Texas gives Havi's signature caramel its distinctive flavor.",
   contactEmail: "info@haviscandyco.com",

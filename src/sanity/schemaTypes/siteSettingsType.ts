@@ -45,6 +45,12 @@ export const siteSettingsType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "storyImage",
+      title: "Story Image (e.g. photo of Havi)",
+      type: "image",
+      description: "A personal photo for the Our Story section",
+    }),
+    defineField({
       name: "philosophyBody",
       title: "Philosophy Body",
       type: "text",

@@ -93,7 +93,7 @@ export function buildFaqSchema() {
         name: "Where can I buy Havi's Candy in Waco?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "You can find Havi's Candy at Homestead Weekly Market, Brazos Valley Cheese, and Homestead Gristmill in the Waco area.",
+          text: "You can find Havi's Candy at Heritage Fine Crafts, Brazos Valley Cheese, and Homestead Gristmill in the Waco area.",
         },
       },
     ],

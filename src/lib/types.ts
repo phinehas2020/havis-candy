@@ -37,6 +37,7 @@ export type SiteSettings = {
   heroSubheading: string;
   storyHeading: string;
   storyBody: string;
+  storyImageUrl?: string;
   philosophyBody: string;
   contactEmail: string;
   contactPhone: string;

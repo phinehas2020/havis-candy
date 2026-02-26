@@ -163,9 +163,13 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
       return fallbackSiteSettings;
     }
 
+    const { storyImage, ...rest } = settings as Partial<SiteSettings> & { storyImage?: unknown };
+    const storyImageUrl = storyImage ? getSanityImageUrl(storyImage) : undefined;
+
     return {
       ...fallbackSiteSettings,
-      ...settings,
+      ...rest,
+      ...(storyImageUrl && { storyImageUrl }),
     };
   } catch {
     return fallbackSiteSettings;

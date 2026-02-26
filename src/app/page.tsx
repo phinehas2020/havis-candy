@@ -41,7 +41,7 @@ export default async function HomePage() {
             {/* Starburst Badge */}
             <div className="hero-badge flex justify-center">
               <div className="heritage-badge animate-in animate-float">
-                <span className="heritage-badge-label">Handmade</span>
+                <span className="heritage-badge-label">Est.</span>
                 <span className="heritage-badge-year">2019</span>
                 <span className="heritage-badge-text">Waco, Texas</span>
               </div>
@@ -189,6 +189,23 @@ export default async function HomePage() {
               <div className="md:col-span-7 space-y-6 sm:space-y-8">
                 <span className="overline">Our Story</span>
                 <h2 className="section-heading">{settings.storyHeading}</h2>
+                <div className="relative aspect-[4/3] max-w-sm rounded-[var(--radius-md)] overflow-hidden border-2 border-[var(--color-amber)] shadow-[var(--shadow-md)] bg-[var(--color-dark-surface)]">
+                  {settings.storyImageUrl ? (
+                    <Image
+                      src={settings.storyImageUrl}
+                      alt="Havi"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 320px, 100vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-[var(--color-cream)]/50 text-center p-6 gap-2">
+                      <span className="text-4xl" aria-hidden>📷</span>
+                      <span className="text-sm">Your photo here</span>
+                      <span className="text-xs">Add /public/images/our-story.jpg or set storyImageUrl in Sanity</span>
+                    </div>
+                  )}
+                </div>
                 <p className="lead-text">{settings.storyBody}</p>
 
                 <div className="ornament-rule">
@@ -196,9 +213,9 @@ export default async function HomePage() {
                 </div>
 
                 <p className="body-text">
-                  From Dry Creek Road to kitchens across Central Texas, each batch reflects
+                  From Dry Creek Road to homes across America, each batch reflects
                   the same thoughtful craft that started it all—real ingredients, real care,
-                  and a genuine love for making something special.
+                  and a genuine love for making something special. Our biggest customers are in Washington.
                 </p>
               </div>
 

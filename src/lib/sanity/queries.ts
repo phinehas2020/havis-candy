@@ -46,6 +46,7 @@ export const siteSettingsQuery = groq`
     heroSubheading,
     storyHeading,
     storyBody,
+    storyImage,
     philosophyBody,
     contactEmail,
     contactPhone,

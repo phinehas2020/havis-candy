@@ -39,7 +39,7 @@ export function SiteFooter() {
         <div>
           <Link
             href="/"
-            className="logo-stacked inline-flex mb-6 rounded-[var(--radius-sm)] border-2 border-[var(--color-amber)] bg-[var(--color-vanilla-cream)] p-2"
+            className="logo-stacked inline-flex mb-6 rounded-[var(--radius-sm)] border-2 border-[var(--color-amber)] p-2"
             aria-label="Havi's Candy Co. home"
           >
             <Image
