@@ -30,6 +30,10 @@ export default async function HomePage() {
   const showcaseProducts = heroProducts.slice(0, 3);
   const heroProduct = heroProducts[0];
   const spotlightTestimonial = testimonials[0];
+  const storyImageSrc = settings.storyImageUrl ?? "/sorghum-pouring.png";
+  const storyImageAlt = settings.storyImageUrl
+    ? "Portrait of Ahavah 'Havi' and her family"
+    : "Handcrafted caramel-making in progress";
 
   return (
     <>
@@ -191,41 +195,38 @@ export default async function HomePage() {
             ═══════════════════════════════════════════════════════════════════ */}
         <section id="story" className="section-lg section-dark">
           <div className="container">
-            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
               {/* Story Content */}
               <div className="md:col-span-7 space-y-6 sm:space-y-8">
                 <span className="overline">Our Story</span>
-                <h2 className="section-heading">{settings.storyHeading}</h2>
-                <div className="relative aspect-[4/3] max-w-sm rounded-[var(--radius-md)] overflow-hidden border-2 border-[var(--color-amber)] shadow-[var(--shadow-md)] bg-[var(--color-dark-surface)]">
-                  {settings.storyImageUrl ? (
+                <h2 className="section-heading text-balance">{settings.storyHeading}</h2>
+                <figure className="max-w-md overflow-hidden rounded-[var(--radius-md)] border-2 border-[var(--color-amber)] bg-[var(--color-dark-surface)] shadow-[var(--shadow-md)]">
+                  <div className="relative aspect-[5/4]">
                     <Image
-                      src={settings.storyImageUrl}
-                      alt="Havi"
+                      src={storyImageSrc}
+                      alt={storyImageAlt}
                       fill
                       className="object-cover"
-                      sizes="(min-width: 768px) 320px, 100vw"
+                      sizes="(min-width: 1024px) 420px, (min-width: 768px) 52vw, 100vw"
                     />
-                  ) : (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-[var(--color-cream)]/50 text-center p-6 gap-2">
-                      <span className="text-4xl" aria-hidden>📷</span>
-                      <span className="text-sm">Your photo here</span>
-                      <span className="text-xs">Add /public/images/our-story.jpg or set storyImageUrl in Sanity</span>
-                    </div>
-                  )}
-                </div>
-                <p className="lead-text">{settings.storyBody}</p>
+                  </div>
+                  <figcaption className="border-t-2 border-dashed border-[color:rgba(218,165,32,0.45)] px-4 py-3 text-sm leading-relaxed text-[color:rgba(253,248,240,0.84)] text-pretty">
+                    The same old-fashioned process, batch after batch.
+                  </figcaption>
+                </figure>
+                <p className="lead-text text-pretty">{settings.storyBody}</p>
 
                 <div className="ornament-rule">
                   <div className="ornament-dots"><span></span></div>
                 </div>
 
-                <p className="body-text">
+                <p className="body-text text-pretty">
                   {aboutUs.body}
                 </p>
               </div>
 
               {/* Heritage Card — Postcard style */}
-              <div className="md:col-span-5 space-y-6">
+              <div className="md:col-span-5 space-y-6 md:pt-2">
                 <figure className="bg-[var(--color-butter)] border-3 border-[var(--color-amber)] rounded-[var(--radius-md)] p-3 shadow-[var(--shadow-md)]">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(var(--radius-md)-4px)] border-2 border-[var(--color-dark)]">
                     <Image
@@ -242,13 +243,13 @@ export default async function HomePage() {
                 </figure>
 
                 <div className="card-framed bg-[var(--color-dark-surface)]! border-[var(--color-amber)]!">
-                  <div className="text-center mb-8 relative z-10">
+                  <div className="text-center mb-6 relative z-10">
                     <div className="heritage-stamp mx-auto border-[var(--color-amber)]!">
                       <span className="heritage-stamp-text text-[var(--color-amber)]!">Est. 2019 &middot; Waco, TX</span>
                     </div>
                   </div>
-                  <h3 className="subheading text-center mb-4 relative z-10 text-[var(--color-cream)]!">Made with old-fashioned care</h3>
-                  <p className="body-text-sm text-center relative z-10 text-[var(--color-cream)]/80!">{settings.philosophyBody}</p>
+                  <h3 className="subheading text-center mb-3 relative z-10 text-[var(--color-cream)]!">Made with old-fashioned care</h3>
+                  <p className="body-text-sm text-center relative z-10 text-[var(--color-cream)]/80! text-pretty">{settings.philosophyBody}</p>
                 </div>
               </div>
             </div>
