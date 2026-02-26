@@ -44,3 +44,7 @@ export type SiteSettings = {
   mailingAddress: string;
   kitchenAddress: string;
 };
+
+export type AboutUs = {
+  body: string;
+};

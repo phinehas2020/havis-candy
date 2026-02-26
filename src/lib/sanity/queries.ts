@@ -54,3 +54,9 @@ export const siteSettingsQuery = groq`
     kitchenAddress
   }
 `;
+
+export const aboutUsQuery = groq`
+  *[_type == "aboutUs"][0] {
+    body
+  }
+`;

@@ -1,4 +1,10 @@
-import type { Product, SiteSettings, StoreLocation, Testimonial } from "@/lib/types";
+import type {
+  AboutUs,
+  Product,
+  SiteSettings,
+  StoreLocation,
+  Testimonial,
+} from "@/lib/types";
 
 export const fallbackProducts: Product[] = [
   {
@@ -73,7 +79,7 @@ export const fallbackLocations: StoreLocation[] = [
     region: "TX",
     postalCode: "76705",
     mapUrl:
-      "https://maps.apple.com/?address=608%20Dry%20Creek%20Rd,%20Waco,%20TX%2076705,%20United%20States&q=Heritage%20Fine%20Crafts&t=h",
+      "https://www.google.com/maps?q=608+Dry+Creek+Rd,+Waco,+TX+76705",
   },
   {
     id: "brazos-valley-cheese",
@@ -115,11 +121,15 @@ export const fallbackSiteSettings: SiteSettings = {
   storyHeading: "About Havi & Her Journey",
   storyBody:
     "Ahavah “Havi” discovered her love for making sweet treats at just five years old. What began as a childhood hobby grew into a business rooted in craft, tradition, and hospitality.",
-  storyImageUrl: "",
   philosophyBody:
     "Every batch is hand-poured and hand-wrapped. Sorghum from the family farm in Central Texas gives Havi's signature caramel its distinctive flavor.",
   contactEmail: "info@haviscandyco.com",
   contactPhone: "254-229-0688",
   mailingAddress: "1400B Dry Creek Rd, Waco, TX 76705",
   kitchenAddress: "7737 Gholson Rd, Waco, TX 76705",
+};
+
+export const fallbackAboutUs: AboutUs = {
+  body:
+    "From Dry Creek Road to homes across America, each batch reflects the same thoughtful craft that started it all—real ingredients, real care, and a genuine love for making something special. Many of our biggest customers are in Washington.",
 };

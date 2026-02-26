@@ -1206,6 +1206,8 @@ img {
 .site-header-inner {
   padding-top: clamp(0.5rem, 1.6vw, 0.85rem);
   padding-bottom: clamp(0.5rem, 1.6vw, 0.85rem);
+  position: relative;
+  z-index: 1;
 }
 
 .site-header-row {
@@ -1237,6 +1239,11 @@ img {
   align-items: center;
   gap: var(--space-2);
   flex-shrink: 0;
+}
+
+.site-header.pattern-awning::after {
+  z-index: 0;
+  pointer-events: none;
 }
 
 @media (min-width: 1024px) {
@@ -2442,11 +2449,15 @@ img {
 
   .hero-copy {
     margin-bottom: var(--space-5);
-    padding-inline: var(--space-2);
+    padding-inline: var(--space-1);
   }
 
   .hero-title {
+    font-size: clamp(1.9rem, 8.7vw, 2.3rem);
+    line-height: 1.06;
+    text-wrap: pretty;
     text-shadow: 2px 2px 0 var(--color-dark);
+    max-inline-size: 100%;
     overflow-wrap: break-word;
     word-break: normal;
   }
