@@ -5,14 +5,21 @@ import { AddToCartButton } from "@/components/add-to-cart-button";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { getLocations, getProducts, getSiteSettings, getTestimonials } from "@/lib/data/content";
+import {
+  getAboutUs,
+  getLocations,
+  getProducts,
+  getSiteSettings,
+  getTestimonials,
+} from "@/lib/data/content";
 import { buildFaqSchema, buildLocalBusinessSchema, buildProductsSchema } from "@/lib/seo/schemas";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [settings, products, locations, testimonials] = await Promise.all([
+  const [settings, aboutUs, products, locations, testimonials] = await Promise.all([
     getSiteSettings(),
+    getAboutUs(),
     getProducts(),
     getLocations(),
     getTestimonials(),
@@ -39,9 +46,9 @@ export default async function HomePage() {
         <section className="section-lg candy-counter-bg hero-above-fold">
           <div className="container">
             {/* Starburst Badge */}
-            <div className="hero-badge flex justify-center">
-              <div className="heritage-badge animate-in animate-float">
-                <span className="heritage-badge-label">Est.</span>
+              <div className="hero-badge flex justify-center">
+                <div className="heritage-badge animate-in animate-float">
+                <span className="heritage-badge-label">EST.</span>
                 <span className="heritage-badge-year">2019</span>
                 <span className="heritage-badge-text">Waco, Texas</span>
               </div>
@@ -213,14 +220,27 @@ export default async function HomePage() {
                 </div>
 
                 <p className="body-text">
-                  From Dry Creek Road to homes across America, each batch reflects
-                  the same thoughtful craft that started it all—real ingredients, real care,
-                  and a genuine love for making something special. Our biggest customers are in Washington.
+                  {aboutUs.body}
                 </p>
               </div>
 
               {/* Heritage Card — Postcard style */}
-              <div className="md:col-span-5">
+              <div className="md:col-span-5 space-y-6">
+                <figure className="bg-[var(--color-butter)] border-3 border-[var(--color-amber)] rounded-[var(--radius-md)] p-3 shadow-[var(--shadow-md)]">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(var(--radius-md)-4px)] border-2 border-[var(--color-dark)]">
+                    <Image
+                      src="/hero-caramels.png"
+                      alt="Havi"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 32vw, 100vw"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-center font-[family-name:var(--font-ui)] text-[11px] tracking-[0.08em] uppercase text-[var(--color-amber)]">
+                    From Havi&apos;s kitchen to your home
+                  </figcaption>
+                </figure>
+
                 <div className="card-framed bg-[var(--color-dark-surface)]! border-[var(--color-amber)]!">
                   <div className="text-center mb-8 relative z-10">
                     <div className="heritage-stamp mx-auto border-[var(--color-amber)]!">
