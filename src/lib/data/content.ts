@@ -3,6 +3,7 @@ import "server-only";
 import { cache } from "react";
 
 import {
+  fallbackAboutUs,
   fallbackLocations,
   fallbackProducts,
   fallbackSiteSettings,
@@ -11,12 +12,19 @@ import {
 import { sanityClient } from "@/lib/sanity/client";
 import { getSanityImageUrl } from "@/lib/sanity/image";
 import {
+  aboutUsQuery,
   locationsQuery,
   productsQuery,
   siteSettingsQuery,
   testimonialsQuery,
 } from "@/lib/sanity/queries";
-import type { Product, SiteSettings, StoreLocation, Testimonial } from "@/lib/types";
+import type {
+  AboutUs,
+  Product,
+  SiteSettings,
+  StoreLocation,
+  Testimonial,
+} from "@/lib/types";
 
 type SanityProduct = {
   _id: string;
@@ -50,6 +58,44 @@ type SanityTestimonial = {
   author?: string;
 };
 
+type SanityAboutUs = {
+  body?: string;
+};
+
+const ABOUT_US_OLD_OPENING = /From Dry Creek Road to kitchens across Central Texas,/i;
+const ABOUT_US_UPDATED_OPENING = "From Dry Creek Road to homes across America,";
+const HERITAGE_FINE_CRAFTS_MAP_URL =
+  "https://www.google.com/maps?q=608+Dry+Creek+Rd,+Waco,+TX+76705";
+
+function normalizeAboutUsBody(body: string): string {
+  const revisedBody = body.replace(ABOUT_US_OLD_OPENING, ABOUT_US_UPDATED_OPENING);
+
+  if (
+    revisedBody.includes(ABOUT_US_UPDATED_OPENING) &&
+    !/biggest customers are in Washington/i.test(revisedBody)
+  ) {
+    return `${revisedBody} Many of our biggest customers are in Washington.`;
+  }
+
+  return revisedBody;
+}
+
+function normalizeLocation(location: StoreLocation): StoreLocation {
+  if (location.name.trim().toLowerCase() !== "homestead weekly market") {
+    return location;
+  }
+
+  return {
+    ...location,
+    name: "Heritage Fine Crafts",
+    streetAddress: "608 Dry Creek Rd",
+    city: "Waco",
+    region: "TX",
+    postalCode: "76705",
+    mapUrl: HERITAGE_FINE_CRAFTS_MAP_URL,
+  };
+}
+
 function mapSanityProduct(item: SanityProduct): Product {
   return {
     id: item._id,
@@ -74,7 +120,7 @@ function mapSanityProduct(item: SanityProduct): Product {
 }
 
 function mapSanityLocation(item: SanityLocation): StoreLocation {
-  return {
+  return normalizeLocation({
     id: item._id,
     name: item.name ?? "Retail Partner",
     streetAddress: item.streetAddress ?? "Waco",
@@ -82,7 +128,7 @@ function mapSanityLocation(item: SanityLocation): StoreLocation {
     region: item.region ?? "TX",
     postalCode: item.postalCode ?? "76705",
     mapUrl: item.mapUrl ?? "https://www.google.com/maps?q=Waco,+TX",
-  };
+  });
 }
 
 function mapSanityTestimonial(item: SanityTestimonial): Testimonial {
@@ -113,19 +159,19 @@ export const getProducts = cache(async (): Promise<Product[]> => {
 
 export const getLocations = cache(async (): Promise<StoreLocation[]> => {
   if (!sanityClient) {
-    return fallbackLocations;
+    return fallbackLocations.map(normalizeLocation);
   }
 
   try {
     const locations = await sanityClient.fetch<SanityLocation[]>(locationsQuery);
 
     if (!locations?.length) {
-      return fallbackLocations;
+      return fallbackLocations.map(normalizeLocation);
     }
 
     return locations.map(mapSanityLocation);
   } catch {
-    return fallbackLocations;
+    return fallbackLocations.map(normalizeLocation);
   }
 });
 
@@ -146,6 +192,35 @@ export const getTestimonials = cache(async (): Promise<Testimonial[]> => {
     return testimonials.map(mapSanityTestimonial);
   } catch {
     return fallbackTestimonials;
+  }
+});
+
+export const getAboutUs = cache(async (): Promise<AboutUs> => {
+  if (!sanityClient) {
+    return {
+      ...fallbackAboutUs,
+      body: normalizeAboutUsBody(fallbackAboutUs.body),
+    };
+  }
+
+  try {
+    const aboutUs = await sanityClient.fetch<SanityAboutUs | null>(aboutUsQuery);
+
+    if (!aboutUs?.body) {
+      return {
+        ...fallbackAboutUs,
+        body: normalizeAboutUsBody(fallbackAboutUs.body),
+      };
+    }
+
+    return {
+      body: normalizeAboutUsBody(aboutUs.body),
+    };
+  } catch {
+    return {
+      ...fallbackAboutUs,
+      body: normalizeAboutUsBody(fallbackAboutUs.body),
+    };
   }
 });
 
