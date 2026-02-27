@@ -34,6 +34,10 @@ export default async function HomePage() {
   const storyImageAlt = settings.storyImageUrl
     ? "Portrait of Ahavah 'Havi' and her family"
     : "Handcrafted caramel-making in progress";
+  const wifeStoryImageSrc = settings.wifePhotoUrl ?? "/hero-caramels.png";
+  const wifeStoryImageAlt = settings.wifePhotoUrl
+    ? "A photo of Havi and her wife"
+    : "Havi's caramel-making family tradition";
 
   return (
     <>
@@ -230,15 +234,15 @@ export default async function HomePage() {
                 <figure className="bg-[var(--color-butter)] border-3 border-[var(--color-amber)] rounded-[var(--radius-md)] p-3 shadow-[var(--shadow-md)]">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[calc(var(--radius-md)-4px)] border-2 border-[var(--color-dark)]">
                     <Image
-                      src="/hero-caramels.png"
-                      alt="Havi"
+                      src={wifeStoryImageSrc}
+                      alt={wifeStoryImageAlt}
                       fill
                       className="object-cover"
                       sizes="(min-width: 768px) 32vw, 100vw"
                     />
                   </div>
                   <figcaption className="mt-3 text-center font-[family-name:var(--font-ui)] text-[11px] tracking-[0.08em] uppercase text-[var(--color-amber)]">
-                    From Havi&apos;s kitchen to your home
+                    {settings.wifePhotoUrl ? "Our family's story, shared." : "From Havi's kitchen to your home"}
                   </figcaption>
                 </figure>
 

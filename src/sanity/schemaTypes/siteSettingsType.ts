@@ -51,6 +51,12 @@ export const siteSettingsType = defineType({
       description: "A personal photo for the Our Story section",
     }),
     defineField({
+      name: "wifePhoto",
+      title: "Wife or Family Photo",
+      type: "image",
+      description: "Optional photo for the Our Story sidebar card",
+    }),
+    defineField({
       name: "philosophyBody",
       title: "Philosophy Body",
       type: "text",

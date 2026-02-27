@@ -4,6 +4,8 @@
 | Date | Source | What Went Wrong | What To Do Instead |
 |------|--------|----------------|-------------------|
 | 2026-02-19 | self | Started with repo discovery commands before reading `.claude/napkin.md` for this session. | Open and apply `.claude/napkin.md` first in every session before any shell exploration. |
+| 2026-02-26 | assistant | Added `logo-candy-no-bg.png` and edited footer/logo/image/story fields in the same session without first documenting an image processing fallback path for QA. | Keep a short note in napkin + verify binary diff with `git diff --stat` and quick visual checks before shipping large asset tweaks. |
+| 2026-02-27 | assistant | Interpreted “homes across America” as also including the previous manual sentence about Washington. | Remove automatic CMS append logic and patch both `siteSettings.storyBody` and `aboutUs.body` to keep only the exact requested text. |
 | 2026-02-16 | self | Embedded Studio kept throwing `access control checks` against `system.release`/`sanity.canvas.link` even with CORS fixed, because Sanity enables Releases/Scheduled Drafts/Canvas integrations by default in workspace config. | In `sanity.config.ts`, explicitly disable `releases`, `scheduledDrafts`, and `apps.canvas` when those features are not used to prevent unauthorized listen/query calls. |
 | 2026-02-16 | self | Sanity Studio in-browser `data/listen` and `system.release` requests failed with `access control checks`/401 even though origins existed in CORS. | Ensure Studio origins are configured with credential support; if an origin already exists, rotate it with `sanity cors delete <origin>` then `sanity cors add <origin> --credentials` to force cookie/token auth. |
 | 2026-02-16 | self | UI treated optional `availableForPurchase` as false (`!product.availableForPurchase`), so missing booleans in fallback/incomplete data rendered every button as “Coming Soon.” | Gate availability with `product.availableForPurchase !== false` and ensure fallback products set `availableForPurchase: true` explicitly. |
@@ -37,6 +39,8 @@
 - For Sanity content edits to appear reliably, combine page-level ISR (`export const revalidate`) with Sanity webhook `revalidatePath("/")` + `revalidatePath("/products")`.
 - In JSX hero headings, do not rely on whitespace around a hidden `<br>` for mobile wraps; add an explicit `{" "}` break opportunity and keep a mobile `overflow-wrap` guard to prevent clipped words.
 - For mobile nav dropdowns triggered from small icon containers, avoid `left: 0; right: 0` absolute panels; use a viewport-anchored fixed panel (plus backdrop) so menu width stays usable.
+- For retro display hero text on mobile, prefer `text-wrap: pretty` + fluid `clamp()` font sizing and minimal inline padding to keep lines wider without overflowing.
+- For `pattern-awning` on the sticky header, keep stripe pseudo-element below header content (`.site-header-inner { z-index: 1 }`) so logos/icons never get visually sliced by the top stripe.
 
 ## Patterns That Don't Work
 - Running shell commands with `bash -lc` in this environment can fail due to zsh-specific startup scripts.
@@ -79,3 +83,36 @@
 ## 2026-02-19 Session Note
 - Reduced header logo again: desktop clamp now 72-103px and mobile clamp 64-78px.
 - Updated `sizes` prop in `src/components/site-header.tsx` to match the smaller header logo rendering (72/86/103).
+
+## 2026-02-19 Session Note
+- User requested a slightly smaller header logo after previous adjustment.
+- Next step: minor reduction to both desktop/tablet and mobile width clamps + corresponding `sizes` values.
+
+## 2026-02-19 Session Note
+- Wired About Us copy to Sanity: added editable `aboutUsText` to `siteSettings` schema, query/fallback/types, and used it on the homepage story section.
+
+## 2026-02-19 Session Note
+- Promoted About Us to its own Sanity document type (`aboutUs`) so it appears in Studio sidebar, then wired homepage story copy to `aboutUs.body` and removed duplicate field from `siteSettings`.
+
+## 2026-02-19 Session Note
+- User requested another shrink: reduced header logo clamps further to 68-95px (desktop) and 60-72px (mobile), with `sizes` adjusted to 68/82/95.
+
+## 2026-02-19 Session Note
+- Populated the new `aboutUs` Sanity document directly via API using production Vercel env values after local shell lacked Sanity credentials.
+- Reminder: `tsx -e` one-liners with async work must use an async IIFE to avoid top-level await CJS errors.
+
+## 2026-02-26 Session Note
+- Repeated a known miss: ran initial repo discovery commands before opening `.claude/napkin.md`; next sessions must start with the napkin first.
+- User preference: homepage copy should match real customer behavior/distribution facts (e.g., homes across America, major WA customer base) and location listings must be precise.
+- User preference: heritage badge wording should read as establishment date (`EST. 2019`) instead of `Handmade 2019`.
+
+## 2026-02-26 Session Note
+- Ran `pnpm exec tsc --noEmit` in repo root; command exited with code 0 (no TypeScript errors).
+- Pattern that worked this session: normalize legacy Sanity/fallback copy in `src/lib/data/content.ts` so urgent wording and partner-name fixes render immediately without waiting on manual CMS edits.
+
+| 2026-02-26 | self | Copied `/Users/phinehasadams/Desktop/IMG_5211.JPG` into `public/hero-caramels.png` and switched homepage hero media to this file. | Assume request meant hero image update; skip CMS changes for immediate frontend rollout. |
+
+## 2026-02-26 Session Note
+- Cleaned the homepage story block by replacing the developer-facing photo placeholder with a production fallback image (`/sorghum-pouring.png`) and a styled caption.
+- Pattern that worked: for optional CMS images, render a polished fallback visual in JSX so public pages never show setup instructions.
+| 2026-02-26 | self | Started with `pwd`/`ls` discovery commands before opening `.claude/napkin.md` in this session. | Open `.claude/napkin.md` first, then run any repo discovery command. |

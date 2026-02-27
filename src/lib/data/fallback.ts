@@ -131,5 +131,5 @@ export const fallbackSiteSettings: SiteSettings = {
 
 export const fallbackAboutUs: AboutUs = {
   body:
-    "From Dry Creek Road to homes across America, each batch reflects the same thoughtful craft that started it all—real ingredients, real care, and a genuine love for making something special. Many of our biggest customers are in Washington.",
+    "From Dry Creek Road to homes across America, each batch reflects the same thoughtful craft that started it all—real ingredients, real care, and a genuine love for making something special.",
 };

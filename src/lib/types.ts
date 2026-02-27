@@ -38,6 +38,7 @@ export type SiteSettings = {
   storyHeading: string;
   storyBody: string;
   storyImageUrl?: string;
+  wifePhotoUrl?: string;
   philosophyBody: string;
   contactEmail: string;
   contactPhone: string;

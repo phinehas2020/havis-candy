@@ -67,15 +67,8 @@ const ABOUT_US_UPDATED_OPENING = "From Dry Creek Road to homes across America,";
 const HERITAGE_FINE_CRAFTS_MAP_URL =
   "https://www.google.com/maps?q=608+Dry+Creek+Rd,+Waco,+TX+76705";
 
-function normalizeAboutUsBody(body: string): string {
+function normalizeStoryBody(body: string): string {
   const revisedBody = body.replace(ABOUT_US_OLD_OPENING, ABOUT_US_UPDATED_OPENING);
-
-  if (
-    revisedBody.includes(ABOUT_US_UPDATED_OPENING) &&
-    !/biggest customers are in Washington/i.test(revisedBody)
-  ) {
-    return `${revisedBody} Many of our biggest customers are in Washington.`;
-  }
 
   return revisedBody;
 }
@@ -199,7 +192,7 @@ export const getAboutUs = cache(async (): Promise<AboutUs> => {
   if (!sanityClient) {
     return {
       ...fallbackAboutUs,
-      body: normalizeAboutUsBody(fallbackAboutUs.body),
+      body: normalizeStoryBody(fallbackAboutUs.body),
     };
   }
 
@@ -209,17 +202,17 @@ export const getAboutUs = cache(async (): Promise<AboutUs> => {
     if (!aboutUs?.body) {
       return {
         ...fallbackAboutUs,
-        body: normalizeAboutUsBody(fallbackAboutUs.body),
+        body: normalizeStoryBody(fallbackAboutUs.body),
       };
     }
 
     return {
-      body: normalizeAboutUsBody(aboutUs.body),
+      body: normalizeStoryBody(aboutUs.body),
     };
   } catch {
     return {
       ...fallbackAboutUs,
-      body: normalizeAboutUsBody(fallbackAboutUs.body),
+      body: normalizeStoryBody(fallbackAboutUs.body),
     };
   }
 });
@@ -238,13 +231,23 @@ export const getSiteSettings = cache(async (): Promise<SiteSettings> => {
       return fallbackSiteSettings;
     }
 
-    const { storyImage, ...rest } = settings as Partial<SiteSettings> & { storyImage?: unknown };
+    const {
+      storyImage,
+      wifePhoto,
+      ...rest
+    } = settings as Partial<SiteSettings> & {
+      storyImage?: unknown;
+      wifePhoto?: unknown;
+    };
     const storyImageUrl = storyImage ? getSanityImageUrl(storyImage) : undefined;
+    const wifePhotoUrl = wifePhoto ? getSanityImageUrl(wifePhoto) : undefined;
 
     return {
       ...fallbackSiteSettings,
       ...rest,
+      storyBody: normalizeStoryBody(rest.storyBody ?? fallbackSiteSettings.storyBody),
       ...(storyImageUrl && { storyImageUrl }),
+      ...(wifePhotoUrl && { wifePhotoUrl }),
     };
   } catch {
     return fallbackSiteSettings;
